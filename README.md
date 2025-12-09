@@ -30,6 +30,11 @@ See **[Python Documentation](python/README.md)** for library usage.
 
 Control the device directly from Chrome, Edge, or Bluefy (iOS) without installing anything.
 
+**[🚀 Try the Live Demo](https://cardonator.github.io/kano2_frozen/web/index.html)**
+*(Note: The app runs completely locally in your browser via Web Bluetooth. No data is sent to the server, me, or GitHub.)*
+
+Or run it yourself:
+
 1. Go to the `web/` directory.
 2. Serve the files (must be HTTPS or localhost):
 
