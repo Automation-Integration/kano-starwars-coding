@@ -1,5 +1,5 @@
-﻿// Kano Star Wars / Frozen 2 Scratch Extension
-// Load this in TurboWarp Desktop as a custom extension
+// Kano Star Wars - Improved Scratch Extension
+// Load this in TurboWarp Browser (turbowarp.org) with "Run without Sandbox" enabled
 
 class KanoStarWars {
     constructor() {
@@ -12,6 +12,7 @@ class KanoStarWars {
 
         this.ledBuffer = new Array(9).fill([0, 0, 0]);
         this.listeners = {};
+        this.defaultMode = false;
 
         // Constants
         this.SERVICE_UUID_IO = "11a70300-f691-4b93-a6f4-0968f5b648f8";
@@ -115,6 +116,25 @@ class KanoStarWars {
         this.latestSensor = { raw: val, brightness: b, maxBrightness: maxB };
         this.emit('sensor', this.latestSensor);
         this.detectGesture(activeZone);
+
+        // Default mode: lights respond to hand proximity
+        if (this.defaultMode) {
+            this.updateDefaultMode();
+        }
+    }
+
+    updateDefaultMode() {
+        const [n, e, s, w] = this.latestSensor.brightness;
+        const max = this.latestSensor.maxBrightness;
+
+        // N=Red, E=Green, S=Blue, W=Yellow, Center=White
+        this.setLed(7, n, 0, 0); this.setLed(0, n, 0, 0);  // North
+        this.setLed(1, 0, e, 0); this.setLed(2, 0, e, 0);  // East
+        this.setLed(3, 0, 0, s); this.setLed(4, 0, 0, s);  // South
+        this.setLed(5, w, w, 0); this.setLed(6, w, w, 0);  // West
+        this.setLed(8, max, max, max);                      // Center
+
+        this.sendLeds();
     }
 
     detectGesture(currentZone) {
@@ -201,6 +221,13 @@ class KanoStarWars {
             // Ignore dropped packets
         }
     }
+
+    // Convert 0-255 raw sensor value to 0-100 proximity percentage
+    rawToProximity(rawValue) {
+        // rawValue: 255 = far, 0 = close
+        // Return: 0 = closest, 100 = farthest
+        return Math.round((rawValue / 255) * 100);
+    }
 }
 
 // ===== SCRATCH EXTENSION =====
@@ -218,22 +245,36 @@ class KanoStarWarsExtension {
         this.kano.on('disconnect', () => {
             this.connectionStatus = "Disconnected";
         });
+
+        // Color presets
+        this.colors = {
+            'Red': [255, 0, 0],
+            'Green': [0, 255, 0],
+            'Blue': [0, 0, 255],
+            'Yellow': [255, 255, 0],
+            'Orange': [255, 165, 0],
+            'Purple': [128, 0, 128],
+            'Pink': [255, 192, 203],
+            'White': [255, 255, 255],
+            'Cyan': [0, 255, 255],
+            'Off': [0, 0, 0]
+        };
     }
 
     getInfo() {
         return {
             id: 'kanostarwars',
             name: 'Kano Star Wars',
-            color1: '#5CB1D6',
-            color2: '#47A8C9',
-            color3: '#2E96BA',
-            blockIconURI: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDVsNSAxNS01IDEwLTUgMTAgNS0xNXoiIGZpbGw9IiM1Q0IxRDYiLz48L3N2Zz4=',
+            color1: '#0066ff',
+            color2: '#0033ff',
+            color3: '#0000ff',
+            // data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='45' y='70' width='10' height='30' fill='#606060'/><rect x='48' y='0' width='4' height='70' fill='#00d5ff'/><rect x='46' y='0' width='2' height='70' fill='#4ae1ff'/><rect x='52' y='0' width='2' height='70' fill='#4ae1ff'/></svg>
+            blockIconURI: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJz48cmVjdCB4PSc0NScgeT0nNzAnIHdpZHRoPScxMCcgaGVpZ2h0PSczMCcgZmlsbD0nIzYwNjA2MCcvPjxyZWN0IHg9JzQ4JyB5PScwJyB3aWR0aD0nNCcgaGVpZ2h0PSc3MCcgZmlsbD0nIzAwZDVmZicvPjxyZWN0IHg9JzQ2JyB5PScwJyB3aWR0aD0nMicgaGVpZ2h0PSc3MCcgZmlsbD0nIzRhZTFmZicvPjxyZWN0IHg9JzUyJyB5PScwJyB3aWR0aD0nMicgaGVpZ2h0PSc3MCcgZmlsbD0nIzRhZTFmZicvPjwvc3ZnPg==',
             blocks: [
                 {
                     opcode: 'connect',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: '🔌 connect to Kano device',
-                    func: 'connect'
+                    text: '⚡ connect to Force Sensor'
                 },
                 {
                     opcode: 'isConnected',
@@ -252,9 +293,35 @@ class KanoStarWarsExtension {
                 },
                 '---',
                 {
-                    opcode: 'setLED',
+                    opcode: 'setLEDColor',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'set LED [LED] to red [R] green [G] blue [B]',
+                    text: '💡 set light [LED] to [COLOR]',
+                    arguments: {
+                        LED: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: 0
+                        },
+                        COLOR: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'colors'
+                        }
+                    }
+                },
+                {
+                    opcode: 'setAllLEDsColor',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '💡 set all lights to [COLOR]',
+                    arguments: {
+                        COLOR: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'colors'
+                        }
+                    }
+                },
+                {
+                    opcode: 'setLEDRGB',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '💡 set light [LED] to R [R] G [G] B [B]',
                     arguments: {
                         LED: {
                             type: Scratch.ArgumentType.NUMBER,
@@ -275,9 +342,9 @@ class KanoStarWarsExtension {
                     }
                 },
                 {
-                    opcode: 'setAllLEDs',
+                    opcode: 'setAllLEDsRGB',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'set all LEDs to red [R] green [G] blue [B]',
+                    text: '💡 set all lights to R [R] G [G] B [B]',
                     arguments: {
                         R: {
                             type: Scratch.ArgumentType.NUMBER,
@@ -296,18 +363,13 @@ class KanoStarWarsExtension {
                 {
                     opcode: 'clearLEDs',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'turn off all LEDs'
-                },
-                {
-                    opcode: 'updateLEDs',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: '📤 update LEDs (send to device)'
+                    text: '💡 turn off all lights'
                 },
                 '---',
                 {
-                    opcode: 'getProximity',
+                    opcode: 'getProximityPercent',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'proximity [DIRECTION]',
+                    text: 'distance [DIRECTION] (0=close 100=far)',
                     arguments: {
                         DIRECTION: {
                             type: Scratch.ArgumentType.STRING,
@@ -316,9 +378,26 @@ class KanoStarWarsExtension {
                     }
                 },
                 {
+                    opcode: 'getProximityRaw',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'force strength [DIRECTION] (0-255)',
+                    arguments: {
+                        DIRECTION: {
+                            type: Scratch.ArgumentType.STRING,
+                            menu: 'directions'
+                        }
+                    }
+                },
+                {
+                    opcode: 'getAllProximity',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: 'all distances (N E S W)'
+                },
+                '---',
+                {
                     opcode: 'whenGesture',
                     blockType: Scratch.BlockType.HAT,
-                    text: 'when gesture [GESTURE]',
+                    text: '👋 when gesture [GESTURE]',
                     arguments: {
                         GESTURE: {
                             type: Scratch.ArgumentType.STRING,
@@ -330,6 +409,17 @@ class KanoStarWarsExtension {
                     opcode: 'getLastGesture',
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'last gesture'
+                },
+                '---',
+                {
+                    opcode: 'enableDefaultMode',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '🌟 enable default mode (hand tracking)'
+                },
+                {
+                    opcode: 'disableDefaultMode',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: '🌟 disable default mode'
                 }
             ],
             menus: {
@@ -340,6 +430,10 @@ class KanoStarWarsExtension {
                 gestures: {
                     acceptReporters: true,
                     items: ['UP', 'DOWN', 'LEFT', 'RIGHT']
+                },
+                colors: {
+                    acceptReporters: false,
+                    items: Object.keys(this.colors)
                 }
             }
         };
@@ -367,30 +461,56 @@ class KanoStarWarsExtension {
         await this.kano.disconnect();
     }
 
-    setLED(args) {
+    // LED blocks with auto-update
+    async setLEDColor(args) {
+        const led = Math.floor(args.LED);
+        const [r, g, b] = this.colors[args.COLOR] || [0, 0, 0];
+        this.kano.setLed(led, r, g, b);
+        await this.kano.sendLeds();
+    }
+
+    async setAllLEDsColor(args) {
+        const [r, g, b] = this.colors[args.COLOR] || [0, 0, 0];
+        this.kano.setAllLeds(r, g, b);
+        await this.kano.sendLeds();
+    }
+
+    async setLEDRGB(args) {
         const led = Math.floor(args.LED);
         const r = Math.max(0, Math.min(255, Math.floor(args.R)));
         const g = Math.max(0, Math.min(255, Math.floor(args.G)));
         const b = Math.max(0, Math.min(255, Math.floor(args.B)));
         this.kano.setLed(led, r, g, b);
+        await this.kano.sendLeds();
     }
 
-    setAllLEDs(args) {
+    async setAllLEDsRGB(args) {
         const r = Math.max(0, Math.min(255, Math.floor(args.R)));
         const g = Math.max(0, Math.min(255, Math.floor(args.G)));
         const b = Math.max(0, Math.min(255, Math.floor(args.B)));
         this.kano.setAllLeds(r, g, b);
-    }
-
-    clearLEDs() {
-        this.kano.clearLeds();
-    }
-
-    async updateLEDs() {
         await this.kano.sendLeds();
     }
 
-    getProximity(args) {
+    async clearLEDs() {
+        this.kano.clearLeds();
+        await this.kano.sendLeds();
+    }
+
+    // Proximity blocks
+    getProximityPercent(args) {
+        const dirMap = {
+            'North': 0,
+            'East': 1,
+            'South': 2,
+            'West': 3
+        };
+        const index = dirMap[args.DIRECTION];
+        const rawValue = this.kano.latestSensor.raw[index];
+        return this.kano.rawToProximity(rawValue);
+    }
+
+    getProximityRaw(args) {
         const dirMap = {
             'North': 0,
             'East': 1,
@@ -401,12 +521,29 @@ class KanoStarWarsExtension {
         return this.kano.latestSensor.brightness[index] || 0;
     }
 
+    getAllProximity() {
+        const values = this.kano.latestSensor.raw.map(v => this.kano.rawToProximity(v));
+        return `N:${values[0]} E:${values[1]} S:${values[2]} W:${values[3]}`;
+    }
+
+    // Gesture blocks
     whenGesture(args) {
         return this.kano.lastGesture === args.GESTURE;
     }
 
     getLastGesture() {
         return this.kano.lastGesture || "";
+    }
+
+    // Default mode
+    enableDefaultMode() {
+        this.kano.defaultMode = true;
+    }
+
+    disableDefaultMode() {
+        this.kano.defaultMode = false;
+        this.kano.clearLeds();
+        this.kano.sendLeds();
     }
 }
 
