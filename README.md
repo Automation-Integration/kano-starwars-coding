@@ -52,17 +52,15 @@ See **[Web Documentation](web/README.md)** for API usage.
 Control the device from **[TurboWarp Editor](https://turbowarp.org/editor)**.
 Download or copy and paste the **[kano_scratch_ext.js](kano_scratch_ext.js)** for block extensions.
 
-Steps for adding extension:
+#### Steps for adding extension:
+1.  Create a new Project.
+2.  **Add Extension** (Bottom left Corner).
+3.  Select **Custom Extension** (15th Extension, last one before the seperator).
+4.  Select Files then select the downloaded **[kano_scratch_ext.js](kano_scratch_ext.js)** (or select Text if copy and pasting) and **Load**. _(Note: Select **Run without sandbox**, otherwise Bluetooth won't connect!)._
+5.  Turn on your device and run the **🔌connect to Kano Device** block to connect.
+6.  Have Fun! 
 
-**1.** Create a new Project.
-**2.** **Add Extension** (Bottom left Corner).
-**3.** Select **Custom Extension** (15th Extension, last one before the seperator).
-**4.** Select Files then select the downloaded **[kano_scratch_ext.js](kano_scratch_ext.js)** (or select Text if copy and pasting) and **Load**.
-   _(Note: Select **Run without sandbox**, otherwise Bluetooth won't connect!)._
-**5.** Turn on your device and run the **🔌connect to Kano Device** block to connect.
-**6.** Have Fun!
-
-**Future Updates:**
+#### Future Updates:
 - Add in LED Reset
 - Create Blocks and Add in Sprites that replicate this Tutorial**[TurboWarp Editor](https://www.youtube.com/watch?v=jrqmM5F7QjU)**
 
@@ -83,5 +81,6 @@ Check out **[PROTOCOL.md](docs/PROTOCOL.md)** for a complete reverse-engineering
 
 
 MIT
+
 
 
