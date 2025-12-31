@@ -46,6 +46,27 @@ npx http-server .
 
 See **[Web Documentation](web/README.md)** for API usage.
 
+### ![](https://turbowarp.org/static/assets/e04d8c93cf14ec09031b47d619c04f74.svg) TurboWarp Blocks (JavaScript)
+
+Control the device from **[TurboWarp Editor](https://turbowarp.org/editor)**.
+Download or copy and paste the **[kano_scratch_ext.js](kano_scratch_ext.js)** for block extensions.
+
+Steps for adding extension:
+
+**1.** Create a new Project.
+**2.** **Add Extension** (Bottom left Corner).
+**3.** Select **Custom Extension** (15th Extension, last one before the seperator).
+**4.** Select Files then select the downloaded **[kano_scratch_ext.js](kano_scratch_ext.js)** (or select Text if copy and pasting) and **Load**.
+   _(Note: Select **Run without sandbox**, otherwise Bluetooth won't connect!)._
+**5.** Turn on your device and run the **🔌connect to Kano Device** block to connect.
+**6.** Have Fun!
+
+**Future Updates:**
+- Add in LED Reset
+- Create Blocks and Add in Sprites that replicate this Tutorial**[TurboWarp Editor](https://www.youtube.com/watch?v=jrqmM5F7QjU)**
+
+*(Note: The code is Star Wars themed but it is the same hardware as the Frozen 2 kit and works the same.)*
+
 ## Technical Protocol
 
 Want to port this to Arduino, ESP32, or Rust?
@@ -58,5 +79,6 @@ Check out **[PROTOCOL.md](docs/PROTOCOL.md)** for a complete reverse-engineering
 - **Connection**: Bluetooth Low Energy (BLE).
 
 ## License
+
 
 MIT
