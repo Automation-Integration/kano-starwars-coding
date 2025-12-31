@@ -46,7 +46,7 @@ npx http-server .
 
 See **[Web Documentation](web/README.md)** for API usage.
 
-### ![](https://turbowarp.org/static/assets/e04d8c93cf14ec09031b47d619c04f74.svg) TurboWarp Blocks (JavaScript)
+### ![](https://turbowarp.org/static/assets/e04d8c93cf14ec09031b47d619c04f74.svg){:height="36px" width="36px"} TurboWarp Blocks (JavaScript)
 
 Control the device from **[TurboWarp Editor](https://turbowarp.org/editor)**.
 Download or copy and paste the **[kano_scratch_ext.js](kano_scratch_ext.js)** for block extensions.
@@ -82,3 +82,4 @@ Check out **[PROTOCOL.md](docs/PROTOCOL.md)** for a complete reverse-engineering
 
 
 MIT
+
