@@ -1,0 +1,45 @@
+{
+    "steps": [
+        {
+            "banner": {
+                "text": "**PUZZLE:** I have it on good authority that levitating a starship is no different to moving rocks, it’s only different in your mind. Either way, use the code blocks, and your hand, to solve the puzzle and raise the X-wing.",
+                "hint" :"Apply a force inside a loop to push the X-Wing upwards "
+            },
+            "validation": "win"
+        },
+        {
+            "banner": {
+                "text": "Wow, you did it. No trying for you. But how will you use your new powers?",
+                "nextChallengeButton": true
+            }
+        }
+    ],
+    "parts": [],
+    "modules": [
+        "events",
+        "control"
+    ],
+    "variables": [],
+    "whitelist": {
+        "events": [
+            "onSwipe",
+            "whenPresent"
+        ],
+        "control":[
+            "every_x_seconds"
+        ],
+        "position": [
+            "applyForce",
+            "set",
+            "setAngle"
+        ]
+    },
+    "id": "force_4",
+    "flyoutMode": true,
+
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"></xml>\",\"code\":\"\",\"scene\":\"puzzle010\",\"parts\":[],\"profile\":\"swk\"}",
+
+    "name": "Levitate The X-wing",
+    "version": "1.0.0",
+    "puzzle": true
+}

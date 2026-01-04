@@ -1,0 +1,180 @@
+{
+    "lightsaber": {
+        "name": "Wield a Lightsaber",
+        "description": "Start your journey by learning to wield the weapon of a Jedi Knight",
+        "challenges": [
+            {
+                "id": "lightsaber_1",
+                "name": "Power-up a Lightsaber",
+                "description": ""
+            },
+            {
+                "id": "lightsaber_2",
+                "name": "Add Lightsaber Sound",
+                "description": ""
+            },
+            {
+                "id": "lightsaber_3",
+                "name": "Swing a Lightsaber",
+                "description": ""
+            },
+            {
+                "id": "lightsaber_4",
+                "name": "Add More Sounds",
+                "description": ""
+            },
+            {
+                "id": "lightsaber_6",
+                "name": "Choose a Lightsaber",
+                "description": ""
+            },
+            {
+                "id": "lightsaber_5",
+                "name": "Puzzle: Jedi Training Remote",
+                "description": ""
+            }
+        ]
+    },
+    "force": {
+        "name": "Feel The Force",
+        "description": "Learn the ways of The Force",
+        "challenges": [
+            {
+                "id": "force_1",
+                "name": "Force Telekinesis",
+                "description": ""
+            },
+            {
+                "id": "force_2",
+                "name": "Guide BB-8",
+                "description": ""
+            },
+            {
+                "id": "force_3",
+                "name": "Force Push",
+                "description": ""
+            },
+            {
+                "id": "force_4",
+                "name": "Puzzle: Levitate The X-wing",
+                "description": ""
+            },
+            {
+                "id": "force_5",
+                "name": "Who Will You Levitate?",
+                "description": ""
+            }
+        ]
+    },
+    "pilot": {
+        "name": "Become a Pilot",
+        "description": "Learn to fly with code",
+        "challenges": [
+            {
+                "id": "pilot_1",
+                "name": "Pilot an X-Wing",
+                "description": ""
+            },
+            {
+                "id": "pilot_2",
+                "name": "TIE fighter Flyby",
+                "description": ""
+            },
+            {
+                "id": "pilot_3",
+                "name": "Puzzle: Avoid Asteroids",
+                "description": ""
+            },
+            {
+                "id": "pilot_4",
+                "name": "Luke's Landspeeder",
+                "description": ""
+            },
+            {
+                "id": "pilot_5",
+                "name": "The Trench Run",
+                "description": ""
+            },
+            {
+                "id": "pilot_7",
+                "name": "Pilot an AT-AT",
+                "description": ""
+            },
+            {
+                "id": "pilot_6",
+                "name": "X-Wing or TIE interceptor?",
+                "description": ""
+            }
+        ]
+    },
+    "mind_tricks": {
+        "name": "Influence the Weak Minded",
+        "description": "",
+        "challenges": [
+            {
+                "id": "mind_tricks_1",
+                "name": "Jedi Mind Trick",
+                "description": ""
+            },
+            {
+                "id": "mind_tricks_2",
+                "name": "Control Stormtroopers",
+                "description": ""
+            },
+            {
+                "id": "mind_tricks_3",
+                "name": "Puzzle: Distract Stormtroopers",
+                "description": ""
+            },
+            {
+                "id": "mind_tricks_4",
+                "name": "Remove these Restraints",
+                "description": ""
+            }
+        ]
+    },
+
+    "galaxy": {
+        "name": "A Galaxy of Adventure",
+        "description": "",
+        "challenges": [
+            {
+                "id": "galaxy_1",
+                "name": "The Cantina Band",
+                "description": ""
+            },
+            {
+                "id": "galaxy_2",
+                "name": "Battle of Endor",
+                "description": ""
+            },
+            {
+                "id": "galaxy_3",
+                "name": "Force Lightning",
+                "description": ""
+            },
+            {
+                "id": "galaxy_4",
+                "name": "Force Ghost",
+                "description": ""
+            },
+            {
+                "id": "galaxy_5",
+                "name": "Hologram Message",
+                "description": ""
+            }
+        ]
+    },
+
+    "destiny": {
+        "name": "Choose your Destiny",
+        "description": "",
+        "challenges": [
+            {
+                "id": "choose_your_destiny_1",
+                "name": "Puzzle: Choose your Destiny",
+                "description": ""
+            }
+          ]
+      }
+}

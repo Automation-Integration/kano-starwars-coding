@@ -1,0 +1,396 @@
+{
+    "version": "1.0.0",
+    "id": "galaxy_4",
+    "name": "Force Ghost",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"?2}y{CH5q`X922X57I0Z\\\" x=\\\"50\\\" y=\\\"180\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"objects_add\\\" id=\\\"-BzeFU^gQSDx83D?~ym*\\\"><field name=\\\"ID\\\">Yoda</field><field name=\\\"NAME\\\">Yoda</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"*W_*3G(5uLjJz-[[6,[G\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"jB,o[h@_}~sHIBqpFB,I\\\"><field name=\\\"NUM\\\">400</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"b}yxs~~!`dm!MY,uVyfw\\\"><field name=\\\"NUM\\\">500</field></shadow></value></shadow></value><next></next></block></statement></block></xml>\",\"code\":\"// @challenge-id: galaxy_4\\n// @challenge-name: Force Ghost\\n\\nevents.onStart(function() {\\n  objects.add('Yoda', 'Yoda', position.create(400, 500));\\n  // @challenge-start\\n  objects.setColor(objects.get('Yoda'), '#B3E5FC');\\n  time.every(1, 'frames', function () {\\n    objects.setTransparency(objects.get('Yoda'), math.lerp(0, 80, forceKit.proximity('all')));\\n  });\\n  time.every(100, 'frames', function () {\\n    if (forceKit.height < 80) {\\n      objects.say(objects.getRandom('Yoda'), objects.quote('Hmm.'), 1);\\n      particle.setType('spark');\\n      particle.generate(position.create(math.random(350, 450), 580));\\n      particle.setForce(0, 2);\\n      particle.setTransparency(100, 0);\\n      particle.setColor('#B2EBF2', '#ECEFF1');\\n    }\\n  });\\n\\n});\\n\",\"scene\":\"endor\",\"parts\":[],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "banner": {
+                "text": "Yoda became a Force ghost by being a believer in the light side, wielding it from a selfless and peaceful place. How about you?",
+                "nextButton": true,
+                "disableInput": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "alias": "start_0",
+            "parent": "block#-BzeFU^gQSDx83D?~ym*>next",
+            "type": "start-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_setColor",
+            "alias": "block_1",
+            "openFlyoutCopy": "Give Yoda a Force ghost effect by coloring him blue. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag the <b>Object: tint</b> block into the code space.",
+            "connectTo": "alias#start_0>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_1>input#TINT>shadow>input#ID",
+            "value": "Yoda",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>Yoda</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_1>input#TO COLOR>shadow>input#COLOUR",
+            "value": "#B3E5FC",
+            "bannerCopy": "Change <kc-color-preview color=\"#FF5723\"></kc-color-preview> to a light blue <kc-color-preview color=\"#B3E5FC\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "every_x_seconds",
+            "alias": "block_2",
+            "openFlyoutCopy": "Get a loop block from the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_1>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#UNIT",
+            "value": "frames",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>frames</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_setTransparency",
+            "alias": "block_3",
+            "openFlyoutCopy": "You're going to use this loop to set how see-through Yoda is. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag the <b>Object: set transparency</b> block into the code space.",
+            "connectTo": "alias#block_2>input#DO",
+            "connectCopy": "Connect it inside of the <b>Every <kc-string-preview>1</kc-string-preview> frames</b> loop."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#TRANSPARENCY>shadow>input#ID",
+            "value": "Yoda",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>Yoda</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_lerp",
+            "alias": "block_4",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_3>input#TO TRANSPARENCY",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#TO>shadow>input#NUM",
+            "value": "80",
+            "bannerCopy": "Change <kc-string-preview>200</kc-string-preview> to <kc-string-preview>80</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_proximity",
+            "alias": "block_5",
+            "openFlyoutCopy": "Control how see-through Yoda is with your hand. Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>Force Kit: proximity</b> block into the code space.",
+            "connectTo": "alias#block_4>input#PERCENT",
+            "connectCopy": "Connect to this block."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swUpDownSwipe",
+           "text": "Move your hand up and down to make Yoda materialize."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "every_x_seconds",
+            "alias": "block_6",
+            "openFlyoutCopy": "Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#INTERVAL>shadow>input#NUM",
+            "value": "5",
+            "bannerCopy": "Change <kc-string-preview>1</kc-string-preview> to <kc-string-preview>5</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#UNIT",
+            "value": "frames",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>frames</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "controls_if",
+            "alias": "block_7",
+            "openFlyoutCopy": "Add an <b>if statement</b> to your code. Open the ${toolbox#logic} tray.",
+            "grabBlockCopy": "Drag the <b>if</b> block into the code space.",
+            "connectTo": "alias#block_6>input#DO",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "logic_compare",
+            "alias": "block_8",
+            "openFlyoutCopy": "Open the ${toolbox#logic} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_7>input#IF0",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_height_get",
+            "alias": "block_9",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#OP",
+            "value": "LT",
+            "bannerCopy": "Change <kc-string-preview>=</kc-string-preview> to <kc-string-preview>< less than</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_number",
+            "alias": "block_10",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_10>input#NUM",
+            "value": "80",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>80</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_say",
+            "alias": "block_11",
+            "openFlyoutCopy": "If your hand is just over The Force Kit, the code inside this <b>if statement</b> will run. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Have Yoda say something when your hand is over the The Force Kit. Drag the <b>Object:say</b> block into the code space.",
+            "connectTo": "alias#block_7>input#DO0",
+            "connectCopy": "Connect it inside here."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_11>input#OBJECT>shadow>input#ID",
+            "value": "Yoda",
+            "bannerCopy": "Change <kc-string-preview>random</kc-string-preview> to <kc-string-preview>Yoda</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_quote",
+            "alias": "block_12",
+            "openFlyoutCopy": "Get a <b>quote</b> block from the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_11>input#TEXT",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_12>input#QUOTE",
+            "value": "Hmm.",
+            "bannerCopy": "Change <kc-string-preview>These aren’t the Droids you’re looking for.</kc-string-preview> to <kc-string-preview>Hmm.</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_11>input#TIMEOUT>shadow>input#NUM",
+            "value": "1",
+            "bannerCopy": "Change the number of seconds the speech bubble shows from <kc-string-preview>5</kc-string-preview> to <kc-string-preview>1</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_generate",
+            "alias": "block_14",
+            "openFlyoutCopy": "Add a particle effect to Yoda when he appears. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag the <b>Particle: create</b> block into the code space.",
+            "connectTo": "alias#block_11>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_15",
+            "openFlyoutCopy": "Grab a <b>random number</b> block from the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_14>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to thie particle <b>x</b> position."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#MIN>shadow>input#NUM",
+            "value": "350",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>350</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#MAX>shadow>input#NUM",
+            "value": "450",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>450</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_14>input#POSITION>shadow>input#Y>shadow>input#NUM",
+            "value": "600",
+            "bannerCopy": "Change the <b>y</b> position of the particles from <kc-string-preview>300</kc-string-preview> to <kc-string-preview>600</kc-string-preview> to make them appear underneath Yoda."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swUpDownSwipe",
+           "text": "Keep putting your hand over the sensors to see the particles change as you add more code blocks."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setType",
+            "alias": "block_16",
+            "openFlyoutCopy": "Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag the <b>Particle: type</b> block into the code space.",
+            "connectTo": "alias#block_14>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_16>input#TYPE",
+            "value": "spark",
+            "bannerCopy": "Change <kc-string-preview>circle</kc-string-preview> to <kc-string-preview>spark</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setForce",
+            "alias": "block_17",
+            "openFlyoutCopy": "Set the direction of the particles so they move upwards. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setForce",
+            "alias": "block_17",
+            "openFlyoutCopy": "Set the direction of the particles so they move upwards. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#ANGLE>shadow>input#VALUE",
+            "value": "0",
+            "bannerCopy": "Change the <b>direction</b> from <kc-string-preview>45</kc-string-preview> to <kc-string-preview>0</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#AMOUNT>shadow>input#NUM",
+            "value": "2",
+            "bannerCopy": "Change the <b>strength</b> to <kc-string-preview>2</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setTransparency",
+            "alias": "block_18",
+            "openFlyoutCopy": "Make the particles disappear over time with a <b>transparency</b> block. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_17>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_18>input#END TRANSPARENCY>shadow>input#NUM",
+            "value": "0",
+            "bannerCopy": "Change the <b>end transparency</b> to <kc-string-preview>0</kc-string-preview> so they disappear."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setColor",
+            "alias": "block_19",
+            "openFlyoutCopy": "Finish off the particle effect by changing the color. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_18>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_19>input#START COLOR>shadow>input#COLOUR",
+            "value": "#B2EBF2",
+            "bannerCopy": "Change the <b>start color</b> to a light blue<kc-color-preview color=\"#B2EBF2\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_19>input#END COLOR>shadow>input#COLOUR",
+            "value": "#ECEFF1",
+            "bannerCopy": "Change the <b>end color</b> of the particles to white <kc-color-preview color=\"#FFFFFF\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swUpDownSwipe",
+           "text": "Now, place your hand over the sensor and hear the wisdom of Yoda."
+        },
+        {
+            "banner": {
+                "text": "Hmmm... You have become powerful indeed. But will you become a Jedi or a Sith?",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "forceKit": [
+            "proximity",
+            "height"
+        ],
+        "math": [
+            "math_number",
+            "math_lerp",
+            "math_random"
+        ],
+        "objects": [
+            "setTransparency",
+            "quote",
+            "say",
+            "setColor"
+        ],
+        "logic": [
+            "logic_compare",
+            "controls_if"
+        ],
+        "particle": [
+            "setColor",
+            "setTransparency",
+            "setForce",
+            "generate",
+            "setType"
+        ],
+        "control": [
+            "every_x_seconds"
+        ]
+    },
+    "partsWhitelist": {},
+    "parts": []
+}

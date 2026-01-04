@@ -1,0 +1,499 @@
+{
+    "version": "1.0.0",
+    "id": "pilot_5",
+    "name": "The Trench Run",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><variables><variable type=\\\"\\\" id=\\\"J6P2Kvt_m4_mS5Ts3*;{\\\">blastXposition</variable><variable type=\\\"\\\" id=\\\"uVSp)gGV?AKmQ}qxI-@t\\\">blastYposition</variable></variables><block type=\\\"events_onStart\\\" id=\\\"}xD{v|7Z3U!369R8n|pT\\\" x=\\\"30\\\" y=\\\"160\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"objects_add\\\" id=\\\"?0}PJ8p^+HMk[W=Gd(+Q\\\"><field name=\\\"ID\\\">X-wing (side)</field><field name=\\\"NAME\\\">X-wing (side)</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"Y0UXp6jo*SGq6yLCYR$/\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\",*8s84M*IKJM}DMR*jT}\\\"><field name=\\\"NUM\\\">400</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"N|q@Wzu-[IFAT_5!ony^\\\"><field name=\\\"NUM\\\">150</field></shadow></value></shadow></value><next><block type=\\\"objects_stick\\\" id=\\\"_-sYKpec?|}%W)l+z7[H\\\"><field name=\\\"STATE\\\">freeze</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"%kVCMo7iTCifVvT_ZJrz\\\"><field name=\\\"ID\\\">all</field></shadow></value><next><block type=\\\"objects_scale\\\" id=\\\"~um*l3+!Y!Jn|`4lUQs_\\\"><field name=\\\"PROPORTION\\\">grow</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"-2iOEBD}8?vLF|dNP$QA\\\"><field name=\\\"ID\\\">all</field></shadow></value><value name=\\\"VALUE\\\"><shadow type=\\\"math_number\\\" id=\\\"6xtx*R$!hA?$^HqzxZSf\\\"><field name=\\\"NUM\\\">40</field></shadow></value><next><block type=\\\"speaker_loop\\\" id=\\\"!41xS,^QG8~tll`X7_G(\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"xLPSxmD4~QgRCR!rZy|J\\\"><field name=\\\"SAMPLE\\\">X-wing interior</field></shadow></value></block></next></block></next></block></next></block></statement></block></xml>\",\"code\":\"events.onStart(function() {\\n  objects.add('X-wing (side)', 'X-wing (side)', position.create(400, 150));\\n  objects.stick('freeze', objects.get('all'));\\n  objects.scale('grow', objects.get('all'), 'by', 40);\\n  speaker.loop('X-wing interior');\\n\\n});\\n\",\"scene\":\"scrolling-trench\",\"parts\":[{\"type\":\"speaker\",\"id\":\"speaker\",\"name\":\"Speaker\"}],\"profile\":\"swk\"}",
+    "steps": [
+
+        {
+            "alias": "start_1",
+            "parent": "block#!41xS,^QG8~tll`X7_G(>next",
+            "type": "start-step"
+        },
+        {
+            "banner": {
+            "text": "I have a bad feeling about this. I don't think it'll be anything like Beggar's Canyon. You have to fly an X-wing through the Death Star Trench!",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_2",
+            "openFlyoutCopy": "Start by making some TIE fighter blaster fire shoot across the canvas. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#start_1>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "This variable is going to store where the TIE fighter blasts start from. Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_number",
+            "alias": "block_3",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#NUM",
+            "value": "-200",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>-200</kc-string-preview> so the blasters are created off the left of the canvas."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_4",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#VAR",
+            "value": "blastYposition",
+            "bannerCopy": "Your second variable is going to store the y position that the TIE blasts are created at. Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastYposition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_number",
+            "alias": "block_5",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_4>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#NUM",
+            "value": "400",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>400</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "every_x_seconds",
+            "alias": "block_6",
+            "openFlyoutCopy": "Grab a loop block from the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_4>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#UNIT",
+            "value": "frames",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>frames</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_drawBlade",
+            "alias": "block_7",
+            "openFlyoutCopy": "Time to draw the TIE fighter blasts. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag the <b>Draw beam</b> block into the code space.",
+            "connectTo": "alias#block_6>input#DO",
+            "connectCopy": "Connect it inside of the <b>Every 1 frame</b> loop."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#ANGLE>shadow>input#VALUE",
+            "value": "90",
+            "bannerCopy": "Change the angle of the blast from <kc-string-preview>0</kc-string-preview> to <kc-string-preview>90</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#LENGTH>shadow>input#NUM",
+            "value": "150",
+            "bannerCopy": "Make the blast shorter by changing the length from <kc-string-preview>350</kc-string-preview> to <kc-string-preview>150</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#COLOR>shadow>input#COLOUR",
+            "value": "#7CB342",
+            "bannerCopy": "Change the TIE fighter blast color so it's green <kc-color-preview color=\"#7CB342\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_8",
+            "openFlyoutCopy": "Use the variables you made earlier to set the position of the blast. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_7>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect it to the <b>x</b> position."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_50",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_7>input#POSITION>shadow>input#Y",
+            "connectCopy": "Connect it to the <b>y</b> position."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_50>input#VAR",
+            "value": "blastYposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastYposition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "unary",
+            "alias": "block_9",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_7>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#LEFT_HAND",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "banner": {
+            "text": "This block adds 1 onto the x position of the blast every frame, which makes it move across the canvas.",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#RIGHT_HAND>shadow>input#NUM",
+            "value": "80",
+            "bannerCopy": "Make the blast go faster by changing <kc-string-preview>1</kc-string-preview> to <kc-string-preview>80</kc-string-preview>. This will make the blast move 80 pixels right every frame."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "controls_if",
+            "alias": "block_10",
+            "openFlyoutCopy": "Add some logic to your code that resets the position of the blaster fire when it goes off the canvas. Open the ${toolbox#logic} tray.",
+            "grabBlockCopy": "Drag the <b>if</b> block into the code space.",
+            "connectTo": "alias#block_9>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "logic_compare",
+            "alias": "block_11",
+            "openFlyoutCopy": "Open the ${toolbox#logic} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_10>input#IF0",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_12",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_11>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_12>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_11>input#OP",
+            "value": "GT",
+            "bannerCopy": "Change <kc-string-preview>=</kc-string-preview> to <kc-string-preview>> greater than</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_number",
+            "alias": "block_13",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_11>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_13>input#NUM",
+            "value": "8000",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>8000</kc-string-preview>."
+        },
+        {
+            "banner": {
+            "text": "You've just created an <b>if statement</b>. <b>If</b> the x position of the blast goes 8000 pixels off the canvas, whatever is inside of this block will run.",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_16",
+            "openFlyoutCopy": "Use the if statement to reset the x position of the blaster so it goes back to the left side of the canvas when it reaches the right side. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_10>input#DO0",
+            "connectCopy": "Connect it inside of your if statement."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_16>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_17",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#MIN>shadow>input#NUM",
+            "value": "-800",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>-800</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#MAX>shadow>input#NUM",
+            "value": "0",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>0</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_14",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_14>input#VAR",
+            "value": "blastYposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastYposition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_15",
+            "openFlyoutCopy": "Next you'll randomize the Y position of the blasts so they come in at different heights. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_14>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#MAX>shadow>input#NUM",
+            "value": "600",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>600</kc-string-preview>, the height of the canvas."
+        },
+        {
+            "type": "create-block",
+            "category": "part#speaker>toolbox",
+            "blockType": "speaker_play",
+            "alias": "block_18",
+            "openFlyoutCopy": "Play a TIE fighter blaster sound when a blast is created. Open the ${part#speaker>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_14>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_18>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "tie-fighter-blaster",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>TIE fighter blaster</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_setAllLeds",
+            "alias": "block_19",
+            "openFlyoutCopy": "Now make The Force Coding Kit's lights flash when there's a blast. Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_18>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_19>input#COLOR>shadow>input#COLOUR",
+            "value": "#8BC34B",
+            "bannerCopy": "Change <kc-color-preview color=\"#03A9F4\"></kc-color-preview> to green to match the TIE fighter's blasts <kc-color-preview color=\"#8BC34B\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "in_x_time",
+            "alias": "block_20",
+            "openFlyoutCopy": "Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_19>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_setAllLeds",
+            "alias": "block_21",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_20>input#DO",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_21>input#COLOR>shadow>input#COLOUR",
+            "value": "#000000",
+            "bannerCopy": "Change <kc-color-preview color=\"#03A9F4\"></kc-color-preview> to <kc-color-preview color=\"#000000\"></kc-color-preview> to turn the LEDs off after they've been on for one second.",
+            "skipCheck": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_lerpTowards",
+            "alias": "block_22",
+            "openFlyoutCopy": "Maneuver the X-wing around the TIE blasts using a lerp block. Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_10>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_23",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_22>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_lerp",
+            "alias": "block_24",
+            "openFlyoutCopy": "Use a lerp block to move the X-Wing up and down the canvas. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_22>input#POSITION>shadow>input#Y",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_24>input#FROM>shadow>input#NUM",
+            "value": "200",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>200</kc-string-preview>. 200 pixels down is the highest the X-Wing will go."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_24>input#TO>shadow>input#NUM",
+            "value": "500",
+            "bannerCopy": "Change <kc-string-preview>200</kc-string-preview> to <kc-string-preview>500</kc-string-preview>, the lowest the X-Wing will go."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_proximity",
+            "alias": "block_25",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block with your mouse or finger into the code space.",
+            "connectTo": "alias#block_24>input#PERCENT",
+            "connectCopy": "Connect to this block."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "Watch out for those TIE fighter blasts!"
+        },
+        {
+            "banner": {
+                "text": "Wow... I'm speechless. My calculations suggest you are becoming even stronger. But are you a Rebel or an Imperial?",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "variables": [
+            "variables_get",
+            "variables_set"
+        ],
+        "math": [
+            "math_number",
+            "math_random",
+            "math_arithmetic",
+            "unary",
+            "math_lerp"
+        ],
+        "logic": [
+            "logic_compare",
+            "controls_if"
+        ],
+        "forceKit": [
+            "proximity",
+            "setAllLeds",
+            "x"
+        ],
+        "control": [
+            "in_x_time",
+            "every_x_seconds"
+        ],
+        "speaker": [
+            "play"
+        ],
+        "position": [
+            "lerpTowards"
+        ],
+        "objects": [
+            "drawBlade"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+            "play"
+        ]
+    },
+    "parts": [
+        "speaker"
+    ]
+}

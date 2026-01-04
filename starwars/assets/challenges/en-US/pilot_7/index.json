@@ -1,0 +1,483 @@
+{
+    "version": "1.0.0",
+    "id": "pilot_7",
+    "name": "Pilot an AT-AT",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><variables><variable type=\\\"\\\" id=\\\"/I$c{o;AyIi9,)/WFECQ\\\">blastXposition</variable></variables><block type=\\\"events_onStart\\\" id=\\\"l)0Frb9qEJE/?7qT`;94\\\" x=\\\"80\\\" y=\\\"150\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"objects_add\\\" id=\\\"`5}jwxVozmx%;YQ[A8Ex\\\"><field name=\\\"ID\\\">AT-AT</field><field name=\\\"NAME\\\">AT-AT</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\";E8(/wD3[fJU547^uQ6o\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"Z7~zmu{2h0fu_5{5|]k|\\\"><field name=\\\"NUM\\\">200</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"I6bQVW$VeOcx)7kv4sfM\\\"><field name=\\\"NUM\\\">430</field></shadow></value></shadow></value><next><block type=\\\"objects_stick\\\" id=\\\"NS3%fv45Wu@*Cubu=wqZ\\\"><field name=\\\"STATE\\\">freeze</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"]EgnV3*Sg80/+N6YES5z\\\"><field name=\\\"ID\\\">all</field></shadow></value><next><block type=\\\"speaker_loop\\\" id=\\\"V3W0LSZxn1tvnQ[!034_\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"uXZV-^/W(HGPejPTj;y,\\\"><field name=\\\"SAMPLE\\\">at-at-footstep</field></shadow></value><next><block type=\\\"every_x_seconds\\\" id=\\\"Y4JSL,jFLA,(FaF*;^ge\\\"><field name=\\\"UNIT\\\">frames</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"7byz?W`k[JrXr+,fG]{O\\\"><field name=\\\"NUM\\\">1</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"speaker_volume_set\\\" id=\\\"C|[5w!Dk]~ZCI]mf{BH7\\\"><value name=\\\"VOLUME\\\"><shadow type=\\\"math_number\\\" id=\\\"ul^RkF7xi?fkc+QmAU0F\\\"><field name=\\\"NUM\\\">0</field></shadow><block type=\\\"forceKit_proximity\\\" id=\\\"1q[)`J3~-y1{Mfp+!d7b\\\"><field name=\\\"PROPERTY\\\">all</field></block></value></block></statement><next></next></block></next></block></next></block></next></block></statement></block></xml>\",\"code\":\"var blastXposition;\\n\\n\\n// @challenge-id: pilot_7\\n// @challenge-name: Pilot an AT-AT\\n\\nevents.onStart(function() {\\n  objects.add('AT-AT', 'AT-AT', position.create(200, 430));\\n  objects.stick('freeze', objects.get('all'));\\n  speaker.loop('at-at-footstep');\\n  time.every(1, 'frames', function () {\\n    speaker.volume = forceKit.proximity('all');\\n  });\\n  // @challenge-start\\n  blastXposition = position.get('x', objects.getRandom('AT-AT')) + 200;\\n\\n});\\n\\nevents.whenPresent(function() {\\n  position.lerpTowards(objects.get('all'), position.create(forceKit.x, 430), 0, 0.1);\\n  objects.drawBlade(position.create(blastXposition, 360), math.random(70, 120), 1, 90, '#D81B60');\\n  blastXposition += 40;\\n  if (blastXposition > math.random(1500, 5000)) {\\n    blastXposition = position.get('x', objects.getRandom('AT-AT')) + 200;\\n    speaker.play('tie-fighter-blaster');\\n  }\\n  time.later(500, 'milliseconds', function () {\\n    objects.drawBlade(position.create(blastXposition + 100, 370), math.random(70, 120), 1, 90, '#D81B60');\\n    // @end-of-challenge: content\\n  });\\n\\n});\\n\",\"scene\":\"hoth\",\"parts\":[{\"type\":\"speaker\",\"id\":\"speaker\",\"name\":\"Speaker\"}],\"profile\":\"swk\"}",
+    "steps": [
+      {
+          "banner": {
+          "text": "The approach of the dreaded AT-AT drove fear into the hearts of the Rebels. Now it's your turn to pilot it. Have fun!",
+          "nextButton": true,
+          "disableInput": true
+      },
+          "beacon":  "banner-button:100,50",
+          "type": "banner-step"
+      },
+        {
+            "alias": "start_1",
+            "parent": "block#Y4JSL,jFLA,(FaF*;^ge>next",
+            "type": "start-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#events",
+            "blockType": "events_whenPresent",
+            "alias": "block_5",
+            "openFlyoutCopy": "Move the AT-AT across the canvas when your hand is over your Force Kit. Open the ${toolbox#events} tray.",
+            "grabBlockCopy": "Drag the <b>Force Kit: repeat while present</b> block into the code space.",
+            "positionUnder": true,
+            "dropCopy": "Drop the block anywhere in your code space."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_lerpTowards",
+            "alias": "block_6",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag the <b>Object: lerp</b> block into the code space.",
+            "connectTo": "alias#block_5>input#CALLBACK",
+            "connectCopy": "Connect it inside the <b>repeat while present</b> block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_7",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Grab the <b>Force Kit: pointer X</b> block.",
+            "connectTo": "alias#block_6>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect it to the <b>x</b> position."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#POSITION>shadow>input#Y>shadow>input#NUM",
+            "value": "430",
+            "bannerCopy": "Change the <b>y</b> position of the AT-AT from <kc-string-preview>300</kc-string-preview> to <kc-string-preview>430</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#PERCENTAGE>shadow>input#NUM",
+            "value": "0.1",
+            "bannerCopy": "AT-AT walkers move very slowly, so change the lerp % from <kc-string-preview>5</kc-string-preview> to <kc-string-preview>0.1</kc-string-preview>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "Tilt your hand to make the Imperial Walker advance on the Rebel base."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_2",
+            "openFlyoutCopy": "Now you're going to make the AT-AT fire it's cannons as it walks. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#start_1>next",
+            "connectCopy": "Connect it inside of the <b>when app starts</b> block- just under the loop."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "You're going to use this <b>variable</b> to store where the blaster bolt starts from. Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_3",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_get",
+            "alias": "block_4",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_3>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#TARGET>shadow>input#ID",
+            "value": "AT-AT",
+            "bannerCopy": "Change <kc-string-preview>random</kc-string-preview> to <kc-string-preview>AT-AT</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#B>shadow>input#NUM",
+            "value": "200",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>200</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_drawBlade",
+            "alias": "block_8",
+            "openFlyoutCopy": "Draw the blaster bolt using a <b>draw beam</b> block. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_6>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_9",
+            "openFlyoutCopy": "Use the <b>variable</b> you just made to set the x position of the blast. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#POSITION>shadow>input#Y",
+            "value": "360",
+            "bannerCopy": "Change the <b>y position</b> of the blaster bolt from <kc-string-preview>500</kc-string-preview> to <kc-string-preview>360</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#LENGTH>shadow>input#NUM",
+            "value": "100",
+            "bannerCopy": "Change the <b>length</b> from <kc-string-preview>350</kc-string-preview> to <kc-string-preview>100</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#WIDTH>shadow>input#NUM",
+            "value": "1",
+            "bannerCopy": "Change the <b>width</b> to <kc-string-preview>1</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#ANGLE>shadow>input#VALUE",
+            "value": "90",
+            "bannerCopy": "Change the <b>angle</b> to <kc-string-preview>90</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#COLOR>shadow>input#COLOUR",
+            "value": "#D81B60",
+            "bannerCopy": "AT-ATs shoot red blasts, so pick a <b>red</b> <kc-color-preview color=\"#FF5722\"></kc-color-preview> for the beam color.",
+            "skipCheck": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "unary",
+            "alias": "block_11",
+            "openFlyoutCopy": "<b>Put your hand over the kit to see the blast you've just drawn</b>. Now you're going to make it move. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_11>input#LEFT_HAND",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_11>input#RIGHT_HAND>shadow>input#NUM",
+            "value": "40",
+            "bannerCopy": "Change <kc-string-preview>1</kc-string-preview> to <kc-string-preview>40</kc-string-preview>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swHandPresentSwipe",
+           "text": "When your hand is over the Force Kit, the <b>blastXposition</b> variable goes up by <b>40</b>. Because you're using this variable to set the position of the blast, it moves across the canvas."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "controls_if",
+            "alias": "block_12",
+            "openFlyoutCopy": "Use an <b>if statement</b> to move the position of the blast so it starts again when it goes off the canvas. Open the ${toolbox#logic} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_11>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "logic_compare",
+            "alias": "block_13",
+            "openFlyoutCopy": "Open the ${toolbox#logic} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_12>input#IF0",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_14",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_13>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_14>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_13>input#OP",
+            "value": "GT",
+            "bannerCopy": "Change <kc-string-preview>=</kc-string-preview> to <kc-string-preview>> greater than</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_15",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_13>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#MIN>shadow>input#NUM",
+            "value": "1500",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>1500</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#MAX>shadow>input#NUM",
+            "value": "5000",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>5000</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_16",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_12>input#DO0",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_16>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_17",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_get",
+            "alias": "block_18",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_17>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_18>input#TARGET>shadow>input#ID",
+            "value": "AT-AT",
+            "bannerCopy": "Change <kc-string-preview>random</kc-string-preview> to <kc-string-preview>AT-AT</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#B>shadow>input#NUM",
+            "value": "200",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>200</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "part#speaker>toolbox",
+            "blockType": "speaker_play",
+            "alias": "block_19",
+            "openFlyoutCopy": "Add a blaster sound effect. Open the ${part#speaker>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_19>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "at-at-blaster",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>AT-AT blaster fire</kc-string-preview>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "That If Statement is very useful. It tells your computer to move the blaster bolt back to its start position if it goes off the screen."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "in_x_time",
+            "alias": "block_20",
+            "openFlyoutCopy": "AT-ATs have two blaster cannons, so let's fire another blast. Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_12>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_20>input#DELAY>shadow>input#NUM",
+            "value": "500",
+            "bannerCopy": "Change <kc-string-preview>1</kc-string-preview> to <kc-string-preview>500</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_20>input#UNIT",
+            "value": "milliseconds",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>milliseconds</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_drawBlade",
+            "alias": "block_21",
+            "openFlyoutCopy": "Grab another <b>Draw beam</b> block from the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_20>input#DO",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_22",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_21>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to the <b>x</b> position."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_23",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_22>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_23>input#VAR",
+            "value": "blastXposition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>blastXposition</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_22>input#B>shadow>input#NUM",
+            "value": "100",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>100</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_21>input#POSITION>shadow>input#Y",
+            "value": "370",
+            "bannerCopy": "Change the <b>y position</b> of the blaster bolt  to <kc-string-preview>370</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_21>input#LENGTH>shadow>input#NUM",
+            "value": "50",
+            "bannerCopy": "Change the <b>length</b> from <kc-string-preview>350</kc-string-preview> to <kc-string-preview>50</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_21>input#WIDTH>shadow>input#NUM",
+            "value": "1",
+            "bannerCopy": "Change the <b>width</b> from<kc-string-preview>3</kc-string-preview> to <kc-string-preview>1</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_21>input#ANGLE>shadow>input#VALUE",
+            "value": "90",
+            "bannerCopy": "Change the <b>angle</b> to <kc-string-preview>90</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_21>input#COLOR>shadow>input#COLOUR",
+            "value": "#D81B60",
+            "bannerCopy": "Change the color to red <kc-color-preview color=\"#FF5722\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "Now, pilot the walker and fire your blasters. You're pretty clever for a human being."
+        },
+        {
+            "banner": {
+                "text": "Your AT-AT is unstoppable! Unless someone figures out how to code a snowspeeder with a harpoon and cable.",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "position": [
+            "get",
+            "lerpTowards"
+        ],
+        "math": [
+            "math_arithmetic",
+            "math_random",
+            "unary"
+        ],
+        "variables": [
+            "variables_set",
+            "variables_get"
+        ],
+        "forceKit": [
+            "x"
+        ],
+        "logic": [
+            "logic_compare",
+            "controls_if"
+        ],
+        "speaker": [
+            "play"
+        ],
+        "objects": [
+            "drawBlade"
+        ],
+        "control": [
+            "in_x_time"
+        ],
+        "events": [
+            "whenPresent"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+            "play"
+        ]
+    },
+    "parts": [
+        "speaker"
+    ]
+}

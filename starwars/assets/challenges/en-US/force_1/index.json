@@ -1,0 +1,93 @@
+{
+    "version": "1.0.0",
+    "id": "force_1",
+    "name": "Force Telekinesis",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"?/QJZW*5J^Dnru{B^vpC\\\" x=\\\"40\\\" y=\\\"150\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"repeat_x_times\\\" id=\\\"mwbo]iOcXCw|`MGcAO,v\\\"><value name=\\\"N\\\"><shadow type=\\\"math_number\\\" id=\\\"fpQY~IrrMg~%CxZu*~Z3\\\"><field name=\\\"NUM\\\">4</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"objects_add\\\" id=\\\"UlIFMmN[|]s60v?xqU4(\\\"><field name=\\\"ID\\\">Rock</field><field name=\\\"NAME\\\">Rock</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"gxL$o2o?*0;^)k52Z^jn\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"jVE$yEZBBRv2oswQp(pd\\\"><field name=\\\"NUM\\\">450</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"h)g@s?YTA[OCjz6y|?k%\\\"><field name=\\\"NUM\\\">450</field></shadow></value></shadow></value></block></statement><next><block type=\\\"objects_add\\\" id=\\\"UltSVp+$7w8M]KlQ)/10\\\"><field name=\\\"ID\\\">R2-D2</field><field name=\\\"NAME\\\">R2-D2</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"H*aaqnIu_`;{K(}7B^6K\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"YZm%dM6X!jpL(fM*^PB,\\\"><field name=\\\"NUM\\\">200</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"|k?zN,UM2zKAqY4^7~WD\\\"><field name=\\\"NUM\\\">400</field></shadow></value></shadow></value><next><block type=\\\"objects_add\\\" id=\\\"9nnXQQ?cp%Xp/(nDXry*\\\"><field name=\\\"ID\\\">Porg</field><field name=\\\"NAME\\\">Porg</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"13P1%zzZ^Sa?RsjBo+z-\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"9OP+zT*6{VObaQgL83M*\\\"><field name=\\\"NUM\\\">620</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"t}bUB;aVh0`k250XE;KV\\\"><field name=\\\"NUM\\\">500</field></shadow></value></shadow></value></block></next></block></next></block></statement></block><block type=\\\"events_whenPresent\\\" id=\\\"s[Qb],Sa}M1gbqU5Gq9b\\\" x=\\\"39\\\" y=\\\"466\\\"><field name=\\\"FLASH\\\"></field></block></xml>\",\"code\":\"events.onStart(function() {\\n  for (var i = 0; i < 4; i++) {\\n    objects.add('Rock', 'Rock', position.create(450, 450));\\n  }\\n  objects.add('R2-D2', 'R2-D2', position.create(200, 400));\\n  objects.add('Porg', 'Porg', position.create(620, 500));\\n\\n});\\n\\nevents.whenPresent(function() {\\n\\n});\\n\",\"scene\":\"ahch-to\",\"parts\":[],\"profile\":\"swk\"}",
+    "steps": [
+        {
+        "banner": {
+            "text": "According to my databanks, The Force is not just about lifting rocks. But that is a good place to start.",
+            "nextButton": true,
+            "disableInput": true
+        },
+        "beacon":  "banner-button:100,50",
+        "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_applyForce",
+            "alias": "block_2",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag the <b>Object: apply force</b> block into the code space.",
+            "connectTo": "block#s[Qb],Sa}M1gbqU5Gq9b>input#CALLBACK",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_3",
+            "openFlyoutCopy": "When your hand is over the sensor, the objects will be forced upwards ↑. Open the ${toolbox#math} tray to set the <b>strength</b>.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>input#FORCE",
+            "connectCopy": "Connect it to the <b>strength</b>."
+        },
+
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_height_get",
+            "alias": "block_4",
+            "openFlyoutCopy": "Set the strength of the force based on where your hand is using a <b>Force Kit: height</b> block. Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>Force Kit: height</b> block into the code space.",
+            "connectTo": "alias#block_3>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#OP",
+            "value": "DIVIDE",
+            "bannerCopy": "The <b>Force Kit: height</b> number needs to be made smaller so the objects don't get pushed upwards too strongly. Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>÷ divide</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#B>shadow>input#NUM",
+            "value": "2",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>2</kc-string-preview>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swLevitateSwipe",
+           "text": "Reach out, put your hand over the sensor and lift."
+       },
+        {
+            "banner": {
+                "text": "Well done, but I wonder how the other Porgs feel about that.",
+                "nextChallengeButton": true
+            },
+            "tooltips": [
+            {
+                "text": "Try changing the objects to levitate something else",
+                "target": "block#9nnXQQ?cp%Xp/(nDXry*>input#ID",
+                "position": "bottom"
+            }
+        ],
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "forceKit": [
+            "height"
+        ],
+        "math": [
+            "math_arithmetic"
+        ],
+        "position": [
+            "applyForce"
+        ]
+    },
+    "partsWhitelist.": {},
+    "parts": []
+}

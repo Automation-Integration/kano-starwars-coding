@@ -1,0 +1,1 @@
+{"SubTexture":[{"x":1,"y":237,"width":6,"name":"light","height":6},{"frameY":-7,"y":1,"frameX":-6,"frameHeight":140,"height":133,"frameWidth":139,"width":133,"name":"body","x":1},{"frameY":0,"y":136,"frameX":-3,"frameHeight":99,"height":99,"frameWidth":100,"width":94,"name":"head","x":1}],"imagePath":"BB8_tex.png","width":256,"name":"BB8","height":256}

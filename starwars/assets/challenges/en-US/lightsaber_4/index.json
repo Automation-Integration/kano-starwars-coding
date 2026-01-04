@@ -1,0 +1,153 @@
+{
+    "version": "1.0.0",
+    "id": "lightsaber_4",
+    "name": "Add More Sounds",
+     "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"EJpZ~/-Cj9-;_M8J{Kww\\\" x=\\\"15\\\" y=\\\"30\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"every_x_seconds\\\" id=\\\"hYv@(9AJ2T~,/1Zo6-DC\\\"><field name=\\\"UNIT\\\">frames</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"B~hZ^p(x0cY@7-1yHwc(\\\"><field name=\\\"NUM\\\">1</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"objects_drawLightsaber\\\" id=\\\"/u}-U0{M~Cb6eNA]JLZE\\\"><field name=\\\"ID\\\">rey-lightsaber</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"s@dNuZK`/_BB8)BC!fOv\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\";pq$NofuI*W$W/%2+VhY\\\"><field name=\\\"NUM\\\">400</field></shadow><block type=\\\"forceKit_x_get\\\" id=\\\"C@o-=-4YW%*,1!hmxi[A\\\"></block></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"8c^HPDDexENt3!3qdt%I\\\"><field name=\\\"NUM\\\">500</field></shadow></value></shadow></value><value name=\\\"SIZE\\\"><shadow type=\\\"math_number\\\" id=\\\"NCj*}z14=fD15N[Yz-AU\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"PERCENT\\\"><shadow type=\\\"math_number\\\" id=\\\"93qAa+1;2-+dVq9]/ABW\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"ANGLE\\\"><shadow type=\\\"angle\\\" id=\\\"ZK^B,/nDjI^(4am}(5aB\\\"><field name=\\\"VALUE\\\">0</field></shadow><block type=\\\"math_lerp\\\" id=\\\"~!z)z[;ic8Koi-|$EnG7\\\"><value name=\\\"FROM\\\"><shadow type=\\\"math_number\\\" id=\\\"|IWl0,h?6h^R,N8swSwH\\\"><field name=\\\"NUM\\\">-20</field></shadow></value><value name=\\\"TO\\\"><shadow type=\\\"math_number\\\" id=\\\"3(UaG@C+`Fhk3X2t2nip\\\"><field name=\\\"NUM\\\">20</field></shadow></value><value name=\\\"PERCENT\\\"><shadow type=\\\"math_number\\\" id=\\\"h]$}Tte7s,~d~zo1!6(c\\\"><field name=\\\"NUM\\\">50</field></shadow><block type=\\\"math_arithmetic\\\" id=\\\"b@j[[G~Q6?CkmOrq8Qfl\\\"><field name=\\\"OP\\\">DIVIDE</field><value name=\\\"A\\\"><block type=\\\"forceKit_x_get\\\" id=\\\"[kNYLbbgu~Uwgq=GFRO=\\\"></block></value><value name=\\\"B\\\"><block type=\\\"math_number\\\" id=\\\"AsdRwe@5lep(6?q`8(/t\\\"><field name=\\\"NUM\\\">8</field></block></value></block></value></block></value><value name=\\\"COLOR\\\"><shadow type=\\\"colour_picker\\\" id=\\\"0HO*X%1MG{%M7=Oj_d@p\\\"><field name=\\\"COLOUR\\\">#03A9F4</field></shadow></value></block></statement><next><block type=\\\"forceKit_setFeedbackLeds\\\" id=\\\"KTMQ-8!MY!dWAozweN{_\\\"><value name=\\\"COLOR\\\"><shadow type=\\\"colour_picker\\\" id=\\\"to^fb8llZmc6a-*+7Wc[\\\"><field name=\\\"COLOUR\\\">#03A9F4</field></shadow></value><next><block type=\\\"speaker_loop\\\" id=\\\"|Eunp(!o=H?LP4mNz5)F\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"/_E*mbP,Ir8T[$fco6Kv\\\"><field name=\\\"SAMPLE\\\">Lightsaber hum</field></shadow></value><next></next></block></next></block></next></block></statement></block></xml>\",\"code\":\"// @challenge-id: lightsaber_4\\n// @challenge-name: Add Lightsaber Sounds\\n\\nevents.onStart(function() {\\n  time.every(1, 'frames', function () {\\n    objects.drawLightsaber('rey-lightsaber', position.create(forceKit.x, 500), 100, 100, math.lerp(-20, 20, forceKit.x / 8), '#03A9F4');\\n  });\\n  forceKit.setFeedbackLeds('#03A9F4');\\n  speaker.loop('Lightsaber hum');\\n  // @challenge-start\\n\\n});\\n\\nevents.onSwipe('left', function() {\\n  speaker.play(speaker.randomFrom('lightsaber-swings'));\\n\\n});\\n\\nevents.onSwipe('right', function() {\\n  speaker.play(speaker.randomFrom('lightsaber-swings'));\\n  // @end-of-challenge: Impressive, you continue to surprise me.\\n\\n});\\n\",\"scene\":\"ahch-to\",\"parts\":[{\"type\":\"speaker\",\"id\":\"speaker\",\"name\":\"Speaker\"}],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "alias": "start_0",
+            "parent": "block#/u}-U0{M~Cb6eNA]JLZE>next",
+            "type": "start-step"
+        },
+        {
+            "banner": {
+                "text": "Complete the Lightsaber by adding sounds when it moves.",
+                "nextButton": true,
+                "disableInput": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#events",
+            "blockType": "events_onSwipe",
+            "alias": "block_1",
+            "openFlyoutCopy": "All of the blocks you need are now sorted into <b>trays</b> depending on what those blocks do. Open the ${toolbox#events} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "positionUnder": true,
+            "dropCopy": "Drop the block anywhere in your code space."
+
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_1>input#TYPE",
+            "value": "left",
+            "bannerCopy": "This block will run the code inside of it when you <b>swipe</b> in different directions over The Force Coding Kit. Change the <kc-string-preview> <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMTUgMCAxMi40NCA0LjQzIDE3LjU2IDQuNDMgMTUgMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIxNS4xNiAzMCAxNC44NSAzMCAxNC4wOSA0LjQzIDE1LjkxIDQuNDMgMTUuMTYgMzAiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\">  Forward</kc-string-preview> swipe to a <kc-string-preview> <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMCAxNSA0LjQzIDE3LjU2IDQuNDMgMTIuNDQgMCAxNSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIzMCAxNC44NCAzMCAxNS4xNSA0LjQzIDE1LjkxIDQuNDMgMTQuMDkgMzAgMTQuODQiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\">  Left</kc-string-preview> swipe."
+        },
+        {
+            "type": "create-block",
+            "category": "part#speaker>toolbox",
+            "blockType": "play",
+            "alias": "block_2",
+            "openFlyoutCopy": "Open the ${part#speaker>toolbox} tray.",
+            "grabBlockCopy": "Drag the <b>Speaker: play</b> block into the code space.",
+            "connectTo": "alias#block_1>input#CALLBACK",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "part#speaker>toolbox",
+            "blockType": "randomFrom",
+            "alias": "block_3",
+            "openFlyoutCopy": "Make a random Lightsaber sound play when you swipe by using a <b>random sound</b> block. Open the ${part#speaker>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>input#SAMPLE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#SET",
+            "value": "lightsaber-swings",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber</kc-string-preview> to <kc-string-preview>Lightsaber Swings</kc-string-preview> from the dropdown list. Every time you swipe left, the block will pick a random sound from the <kc-string-preview>Lightsaber Swings</kc-string-preview> category and play it."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swLeftSwipe",
+           "text": "Swipe your hand left ← to hear a random Lightsaber sound."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#events",
+            "blockType": "events_onSwipe",
+            "alias": "block_4",
+            "openFlyoutCopy": "Make a random Lightsaber sound play when you swipe your hand right, too. Open the ${toolbox#events} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "positionUnder": true,
+            "dropCopy": "Drop the block anywhere in your code space."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#TYPE",
+            "value": "right",
+            "bannerCopy": "Change <kc-string-preview> <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMTUgMCAxMi40NCA0LjQzIDE3LjU2IDQuNDMgMTUgMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIxNS4xNiAzMCAxNC44NSAzMCAxNC4wOSA0LjQzIDE1LjkxIDQuNDMgMTUuMTYgMzAiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\">  Forward</kc-string-preview> to <kc-string-preview> <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMzAgMTUgMjUuNTcgMTIuNDQgMjUuNTcgMTcuNTYgMzAgMTUiLz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMCAxNS4xNiAwIDE0Ljg1IDI1LjU3IDE0LjA5IDI1LjU3IDE1LjkxIDAgMTUuMTYiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\"> Right</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "part#speaker>toolbox",
+            "blockType": "play",
+            "alias": "block_5",
+            "openFlyoutCopy": "Open the ${part#speaker>toolbox} tray.",
+            "grabBlockCopy": "Drag <kc-string-preview>Speaker: play</kc-string-preview> into the code space.",
+            "connectTo": "alias#block_4>input#CALLBACK",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "part#speaker>toolbox",
+            "blockType": "randomFrom",
+            "alias": "block_6",
+            "openFlyoutCopy": "Open the ${part#speaker>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_5>input#SAMPLE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#SET",
+            "value": "lightsaber-swings",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber</kc-string-preview> to <kc-string-preview>Lightsaber Swings</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swRightSwipe",
+            "text": "Now swipe your hand right → to wield the Lightsaber."
+         },
+        {
+            "banner": {
+                "text": "Impressive, you continue to surprise me. But which path will you choose: dark or light?",
+                "nextChallengeButton": true
+            },
+            "tooltips": [
+            {
+                "text": "Try changing <kc-string-preview>Lightsaber Swings</kc-string-preview> to a different category.",
+
+                "target": "alias#block_6",
+                "position": "right"
+            }
+        ],
+            "type": "banner-step"
+        }
+
+    ],
+    "whitelist": {
+        "forceKit": [
+        ],
+        "speaker": [
+            "randomFrom",
+            "play"
+        ],
+        "events": [
+            "onSwipe"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+            "play",
+            "randomFrom"
+        ]
+    },
+    "parts": [
+        "speaker"
+    ]
+}

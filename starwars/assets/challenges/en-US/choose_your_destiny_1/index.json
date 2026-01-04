@@ -1,0 +1,46 @@
+{
+    "steps": [
+        {
+            "banner": {
+                "text": "**PUZZLE:** Will you choose the light side or the dark? <b>Push the enemy's Lightsaber off the canvas</b> to pick your path.",
+                "hint" :"Move the enemy lightsaber to an <b>x position</b> of less than 0 or more than 800 to win the duel and choose your side."
+            },
+            "validation": "win"
+        },
+        {
+            "banner": {
+                "text": "",
+                "nextChallengeButton": true
+            }
+        }
+    ],
+    "partsWhitelist": {
+        "speaker": [
+        ]
+    },
+    "parts": [
+        "speaker",
+        "speaker2"
+    ],
+    "modules": [
+        "events",
+        "control"
+    ],
+    "variables": [],
+    "whitelist": {
+        "forceKit": [
+            "x",
+            "y"
+        ],
+        "math":[
+          "math_arithmetic",
+          "math_lerp"
+        ]
+    },
+    "id": "choose_your_destiny_1",
+    "flyoutMode": true,
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"EJpZ~/-Cj9-;_M8J{Kww\\\" x=\\\"350\\\" y=\\\"100\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"every_x_seconds\\\" id=\\\"hYv@(9AJ2T~,/1Zo6-DC\\\"><field name=\\\"UNIT\\\">frames</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"B~hZ^p(x0cY@7-1yHwc(\\\"><field name=\\\"NUM\\\">1</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"objects_drawLightsaber\\\" id=\\\"W8dQ]y3ED)kdWR-~9,=c\\\"><field name=\\\"ID\\\">rey-lightsaber</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"3+2Z?^-2T,Y$IN0D]Enz\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"Yw8XeA++nNBdN$gYaSpm\\\"><field name=\\\"NUM\\\">500</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"UXb3R-~Q;`P]lsAA{r/S\\\"><field name=\\\"NUM\\\">500</field></shadow></value></shadow></value><value name=\\\"SIZE\\\"><shadow type=\\\"math_number\\\" id=\\\"x,[=Wo5uG7Ha!^;^^s/H\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"PERCENT\\\"><shadow type=\\\"math_number\\\" id=\\\"*,dF0HM;=K*yHKV0(a3(\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"ANGLE\\\"><shadow type=\\\"angle\\\" id=\\\"(QGv}q86)(;_4u?J~0k_\\\"><field name=\\\"VALUE\\\">0</field></shadow><block type=\\\"math_lerp\\\" id=\\\"~!z)z[;ic8Koi-|$EnG7\\\"><value name=\\\"FROM\\\"><shadow type=\\\"math_number\\\" id=\\\"|IWl0,h?6h^R,N8swSwH\\\"><field name=\\\"NUM\\\">-30</field></shadow></value><value name=\\\"TO\\\"><shadow type=\\\"math_number\\\" id=\\\"3(UaG@C+`Fhk3X2t2nip\\\"><field name=\\\"NUM\\\">-10</field></shadow></value><value name=\\\"PERCENT\\\"><shadow type=\\\"math_number\\\" id=\\\"h]$}Tte7s,~d~zo1!6(c\\\"><field name=\\\"NUM\\\">50</field></shadow><block type=\\\"math_arithmetic\\\" id=\\\"b@j[[G~Q6?CkmOrq8Qfl\\\"><field name=\\\"OP\\\">DIVIDE</field><value name=\\\"A\\\"><block type=\\\"forceKit_x_get\\\" id=\\\"[kNYLbbgu~Uwgq=GFRO=\\\"></block></value><value name=\\\"B\\\"><block type=\\\"math_number\\\" id=\\\"AsdRwe@5lep(6?q`8(/t\\\"><field name=\\\"NUM\\\">8</field></block></value></block></value></block></value><value name=\\\"COLOR\\\"><shadow type=\\\"colour_picker\\\" id=\\\"LA4)A|N9/fp)/aM=d^$F\\\"><field name=\\\"COLOUR\\\">#03A9F4</field></shadow></value><next><block type=\\\"objects_drawLightsaber\\\" id=\\\"$]+uk]o|`iS3z,=4KHgG\\\"><field name=\\\"ID\\\">kylo-lightsaber</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"=7bS/``%cMY[s^LXQ1KZ\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"H7JHnui85h~}Mu%xT8[m\\\"><field name=\\\"NUM\\\">300</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"sUz(fU)?Tr+e(oiu57{8\\\"><field name=\\\"NUM\\\">500</field></shadow></value></shadow></value><value name=\\\"SIZE\\\"><shadow type=\\\"math_number\\\" id=\\\"cp`@P`!HAwj4eW,|J](`\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"PERCENT\\\"><shadow type=\\\"math_number\\\" id=\\\"DAtA4X=PXM2pRaqy}Ou~\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"ANGLE\\\"><shadow type=\\\"angle\\\" id=\\\"(QGv}q86)(;_4u?J~0k_\\\"><field name=\\\"VALUE\\\">0</field></shadow><block type=\\\"math_lerp\\\" id=\\\"obJXx5N7-mi6L^(RJq$q\\\"><value name=\\\"FROM\\\"><shadow type=\\\"math_number\\\" id=\\\"!$7W?7/t3Ji1q%a+G]/I\\\"><field name=\\\"NUM\\\">10</field></shadow></value><value name=\\\"TO\\\"><shadow type=\\\"math_number\\\" id=\\\"/c%,CB}k2XoiROL},B$W\\\"><field name=\\\"NUM\\\">30</field></shadow></value><value name=\\\"PERCENT\\\"><shadow type=\\\"math_number\\\" id=\\\"h]$}Tte7s,~d~zo1!6(c\\\"><field name=\\\"NUM\\\">50</field></shadow><block type=\\\"math_arithmetic\\\" id=\\\"E^wy2]Q,ngeo93mB18K/\\\"><field name=\\\"OP\\\">DIVIDE</field><value name=\\\"A\\\"><block type=\\\"forceKit_x_get\\\" id=\\\"?HZE7*LzWpMzah]YWAmY\\\"></block></value><value name=\\\"B\\\"><block type=\\\"math_number\\\" id=\\\"jDkLlcthzAK3YM]ah0p*\\\"><field name=\\\"NUM\\\">8</field></block></value></block></value></block></value><value name=\\\"COLOR\\\"><shadow type=\\\"colour_picker\\\" id=\\\"Tg~(2R!cUppDw,C6(`{6\\\"><field name=\\\"COLOUR\\\">#b71c1c</field></shadow></value></block></next></block></statement><next><block type=\\\"speaker_loop\\\" id=\\\"N}Umn(itHC5TusQ}O@/T\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"CIPM0MCn}e5Pi-[6XG$Y\\\"><field name=\\\"SAMPLE\\\">lightsaber-hum</field></shadow></value><next><block type=\\\"speaker_loop\\\" id=\\\"HpX9(Ph/7WpnL(Q}Atfb\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"zSr*%9LAZoqPz+p{cRuP\\\"><field name=\\\"SAMPLE\\\">kylo-rens-lightsaber-hum</field></shadow></value><next><block type=\\\"every_x_seconds\\\" id=\\\"mr,owH01r+[El6!0DT|*\\\"><field name=\\\"UNIT\\\">seconds</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"[|wu3e7pz%HNuWmNV3B-\\\"><field name=\\\"NUM\\\">3</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"speaker2_play\\\" id=\\\"q%c0sB`qahf4TVN(%UqL\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker2_getSample\\\" id=\\\"}?}*m]YDY^k[FWg/a;_Q\\\"><field name=\\\"SAMPLE\\\">lightsaber-hum</field></shadow><block type=\\\"speaker2_randomFrom\\\" id=\\\"t0}4B]|-MPXeLw{9]QWY\\\"><field name=\\\"SET\\\">lightsaber-swings</field></block></value><next><block type=\\\"in_x_time\\\" id=\\\"dsP+)8lIW2Oe^2b0%(Bj\\\"><field name=\\\"UNIT\\\">seconds</field><value name=\\\"DELAY\\\"><shadow type=\\\"math_number\\\" id=\\\"]JcdLCnMIManY3ADHNle\\\"><field name=\\\"NUM\\\">1</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"speaker2_play\\\" id=\\\"Fuwv*atrENjNyt{iJ9]_\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker2_getSample\\\" id=\\\"}?}*m]YDY^k[FWg/a;_Q\\\"><field name=\\\"SAMPLE\\\">lightsaber-hum</field></shadow><block type=\\\"speaker2_randomFrom\\\" id=\\\"}2`LtJ~?Q-8C4I%vVlqm\\\"><field name=\\\"SET\\\">kylo-lightsaber-swings</field></block></value></block></statement></block></next></block></statement></block></next></block></next></block></next></block></statement></block></xml>\",\"code\":\"events.onStart(function() {\\n  time.every(1, 'frames', function () {\\n    objects.drawLightsaber('rey-lightsaber', position.create(500, 500), 100, 100, math.lerp(-30, -10, forceKit.x / 8), '#03A9F4', 'W8dQ]y3ED)kdWR-~9,=c');\\n    objects.drawLightsaber('kylo-lightsaber', position.create(300, 500), 100, 100, math.lerp(10, 30, forceKit.x / 8), '#b71c1c', '$]+uk]o|`iS3z,=4KHgG');\\n  });\\n  speaker.loop('lightsaber-hum');\\n  speaker.loop('kylo-rens-lightsaber-hum');\\n  time.every(3, 'seconds', function () {\\n    speaker2.play(speaker2.randomFrom('lightsaber-swings'));\\n    time.later(1, 'seconds', function () {\\n      speaker2.play(speaker2.randomFrom('kylo-lightsaber-swings'));\\n    });\\n  });\\n\\n});\\n\",\"scene\":\"puzzle028\",\"parts\":[{\"type\":\"speaker\",\"id\":\"speaker\",\"name\":\"Speaker\"},{\"type\":\"speaker\",\"id\":\"speaker2\",\"name\":\"Speaker 2\"}],\"profile\":\"swk\"}",
+    "name": "Puzzle: Jedi Training Remote",
+    "version": "1.0.0",
+    "puzzle": true
+}

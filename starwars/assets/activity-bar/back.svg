@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" preserveAspectRatio="xMidYMid meet"><g>
+    <circle cx="32" cy="32" r="32" fill="#FF5505"></circle>
+    <g transform="translate(46 17) rotate(90) scale(0.5 0.5)">
+        <path fill="white" d="m61.1696,28.27436a87.94658,87.94658 0 0 1 -25.03113,21.259a8.24281,8.24281 0 0 1 -8.28938,0a87.94658,87.94658 0 0 1 -25.03113,-21.259c-11.38625,-14.92554 29.24567,-14.92554 29.24567,-14.92554s40.5155,0 29.10597,14.92554z"></path>
+    </g>
+</g></svg>

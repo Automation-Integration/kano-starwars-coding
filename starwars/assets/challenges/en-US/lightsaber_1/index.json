@@ -1,0 +1,91 @@
+{
+    "version": "1.0.0",
+    "flyoutMode": true,
+    "id": "lightsaber_1",
+    "name": "Power-up a Lightsaber",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"io;=v6mB;RbJ`k%,p7wY\\\" x=\\\"350\\\" y=\\\"200\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"every_x_seconds\\\" id=\\\"Dtc;K+l0VU7H?q(6SE^(\\\"><field name=\\\"UNIT\\\">frames</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"*Oyck)TY7f}_6!t2Wl+N\\\"><field name=\\\"NUM\\\">1</field></shadow></value></block></statement></block></xml>\",\"code\":\"events.onStart(function() {\\n  time.every(1, 'frames', function () {\\n  });\\n\\n});\\n\",\"scene\":\"ben-hut\",\"parts\":[],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "banner": {
+                "text": "Oh, there you are. On your journey you need to learn to wield the weapon of a Jedi, a Lightsaber. Below are <b>code blocks</b>, they control what you see on the <b>canvas</b> →.",
+                "nextButton": true,
+                "disableInput": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "banner": {
+                "text": "Follow the instructions up here. Drag blocks and connect them to create code. The <b style='background-color:#fec02d; border-radius: 5px; padding: 2px 8px;'>yellow beacon</b> shows you the next step.",
+                "nextButton": true,
+                "disableInput": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "alias": "start_0",
+            "parent": "block#EJpZ~/-Cj9-;_M8J{Kww>input#CALLBACK",
+            "type": "start-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_drawLightsaber",
+            "alias": "block_2",
+            "openFlyoutCopy": "Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Add a Lightsaber to the canvas using the <b>Draw Lightsaber</b> block. Drag it with your mouse or finger into the code space →.",
+            "connectTo": "block#Dtc;K+l0VU7H?q(6SE^(>input#DO",
+            "connectCopy": "Connect it <b>inside</b> of the <b>Every 1 frames</b> loop."
+        },
+        {
+            "banner": {
+                "text": "<b>Every 1 frame</b> a Lightsaber will be drawn onto the canvas.",
+                "nextButton": true
+            },
+            "beacon": "banner-button:100,50",
+            "type": "banner-step",
+            "nextButton": true,
+            "disableInput": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_height_get",
+            "alias": "block_3",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Now you'll add some code that lets you control the length of the blade with your hand. Drag the <b>Force Kit: height</b> block into the code space.",
+            "connectTo": "alias#block_2>input#PERCENT",
+            "connectCopy": "Connect it to the <b>beam %</b>. This sets the length of the Lightsaber's blade."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swUpDownSwipe",
+           "text": "Every Lightsaber comes with a blade length adjuster. <b>Move your hand up and down</b> to control the blade’s length."
+        },
+        {
+            "banner": {
+                "text": "Very good. Onto more adventures. Don't worry, I'll be there every step of the way. I've been told I have to.",
+                "nextChallengeButton": true
+            },
+            "tooltips": [
+            {
+                "text": "Connect code blocks together to make programs.",
+                "target": "block#io;=v6mB;RbJ`k%,p7wY",
+                "position": "top"
+            }
+        ],
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "forceKit": [
+            "height"
+        ],
+        "objects": [
+            "drawLightsaber"
+        ]
+    },
+    "partsWhitelist": {},
+    "parts": []
+}

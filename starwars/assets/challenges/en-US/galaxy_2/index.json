@@ -1,0 +1,291 @@
+{
+    "version": "1.0.0",
+    "id": "galaxy_2",
+    "name": "Battle of Endor",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"l)0Frb9qEJE/?7qT`;94\\\" x=\\\"141\\\" y=\\\"115\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"objects_add\\\" id=\\\"iWBotdR6etu6_L+,vGwn\\\"><field name=\\\"ID\\\">Ewok</field><field name=\\\"NAME\\\">Ewok</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"0O5b?LiMC_NfpstGl{Tw\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"b/]V5O0;6;^6I`GN6hda\\\"><field name=\\\"NUM\\\">600</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"Q6JA2s)T?Ul14`a|[YBi\\\"><field name=\\\"NUM\\\">200</field></shadow></value></shadow></value><next><block type=\\\"objects_add\\\" id=\\\"czn$4HS;QVpL1+0$ccVd\\\"><field name=\\\"ID\\\">Ewok</field><field name=\\\"NAME\\\">Ewok 2</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"@Ehr}QiidfYsN4e0Tq31\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"Ro^yyog/eZd~I6`N~r8K\\\"><field name=\\\"NUM\\\">0</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"GRDi/sZ4-YtN)T)=sbTm\\\"><field name=\\\"NUM\\\">200</field></shadow></value></shadow></value><next><block type=\\\"objects_scale\\\" id=\\\"+)wq^wW_WQuu)Z/-`^vF\\\"><field name=\\\"PROPORTION\\\">set</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"p(`%duKQUzw@(hCguJS-\\\"><field name=\\\"ID\\\">Ewok</field></shadow></value><value name=\\\"VALUE\\\"><shadow type=\\\"math_number\\\" id=\\\"c[sL*[W1KS$H2nW~Cfr+\\\"><field name=\\\"NUM\\\">30</field></shadow></value><next><block type=\\\"objects_scale\\\" id=\\\"m,Wq@Qa/]aTq7]sJwQa2\\\"><field name=\\\"PROPORTION\\\">set</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"YbMHMjgrY/lV=6nG1fnW\\\"><field name=\\\"ID\\\">Ewok 2</field></shadow></value><value name=\\\"VALUE\\\"><shadow type=\\\"math_number\\\" id=\\\"_;,mUy(5rE}?bh,EZ@q%\\\"><field name=\\\"NUM\\\">40</field></shadow></value><next></next></block></next></block></next></block></next></block></statement></block></xml>\",\"code\":\"// @challenge-id: galaxy_2\\n// @challenge-name: Battle of Endor\\n\\nevents.onStart(function() {\\n  objects.add('Ewok', 'Ewok', position.create(600, 200));\\n  objects.add('Ewok', 'Ewok 2', position.create(0, 200));\\n  objects.scale('set', objects.get('Ewok'), 'by', 30);\\n  objects.scale('set', objects.get('Ewok 2'), 'by', 40);\\n  // @challenge-start\\n  objects.add('AT-ST', 'AT-ST', position.create(400, 300));\\n  objects.scale('set', objects.get('AT-ST'), 'by', 120);\\n\\n});\\n\\nevents.onSwipe('right', function() {\\n  objects.add('Rock', 'Rock', position.create(150, 200));\\n  objects.scale('shrink', objects.get('Rock 2'), 'by', 40);\\n  position.applyForce(objects.get('Rock 2'), 120, 40);\\n\\n});\\n\\nevents.onSwipe('left', function() {\\n  objects.add('Rock', 'Rock 2', position.create(550, 250));\\n  objects.scale('shrink', objects.get('Rock'), 'by', 40);\\n  position.applyForce(objects.get('Rock'), 220, 40);\\n  // @end-of-challenge: content\\n\\n});\\n\",\"scene\":\"endor\",\"parts\":[],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "alias": "start_0",
+            "parent": "block#m,Wq@Qa/]aTq7]sJwQa2>next",
+            "type": "start-step"
+        },
+        {
+            "banner": {
+            "text": "The Battle of Endor marked the start of the downfall of the Galactic Empire. And a brave tribe of Ewoks helped pave the way to victory.",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_add",
+            "alias": "block_1",
+            "openFlyoutCopy": "Add an AT-ST to the canvas. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag the <b>Object: create</b> block into the code space.",
+            "connectTo": "alias#start_0>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_1>input#ID",
+            "value": "AT-ST",
+            "bannerCopy": "Change <kc-string-preview>Porg</kc-string-preview> to <kc-string-preview>AT-ST</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_scale",
+            "alias": "block_2",
+            "openFlyoutCopy": "Make the AT-ST bigger. Grab a <b>scale</b> block from the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_1>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#TARGET>shadow>input#ID",
+            "value": "AT-ST",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>AT-ST</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#VALUE>shadow>input#NUM",
+            "value": "20",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>20</kc-string-preview> to make it 20% bigger."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#events",
+            "blockType": "events_onSwipe",
+            "alias": "block_3",
+            "openFlyoutCopy": "Get a <b>gesture</b> block from the ${toolbox#events} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "positionUnder": true,
+            "dropCopy": "Drop the block anywhere in your code space."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#TYPE",
+            "value": "right",
+            "bannerCopy": "Change <kc-string-preview> <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMTUgMCAxMi40NCA0LjQzIDE3LjU2IDQuNDMgMTUgMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIxNS4xNiAzMCAxNC44NSAzMCAxNC4wOSA0LjQzIDE1LjkxIDQuNDMgMTUuMTYgMzAiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\">  Forward</kc-string-preview> to <kc-string-preview> <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMzAgMTUgMjUuNTcgMTIuNDQgMjUuNTcgMTcuNTYgMzAgMTUiLz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMCAxNS4xNiAwIDE0Ljg1IDI1LjU3IDE0LjA5IDI1LjU3IDE1LjkxIDAgMTUuMTYiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\"> Right</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_add",
+            "alias": "block_4",
+            "openFlyoutCopy": "Add a rock to the canvas when you swipe right. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag the <b>Object: create</b> block into the code space.",
+            "connectTo": "alias#block_3>input#CALLBACK",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#ID",
+            "value": "Rock",
+            "bannerCopy": "Change <kc-string-preview>Porg</kc-string-preview> to <kc-string-preview>Rock</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#POSITION>shadow>input#X>shadow>input#NUM",
+            "value": "150",
+            "bannerCopy": "Change the <b>x</b> position from <kc-string-preview>400</kc-string-preview> to <kc-string-preview>150</kc-string-preview>, so it's created next to the Ewok on the left ←. "
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#POSITION>shadow>input#Y>shadow>input#NUM",
+            "value": "200",
+            "bannerCopy": "Change the <b>y</b> position from <kc-string-preview>300</kc-string-preview> to <kc-string-preview>200</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_scale",
+            "alias": "block_5",
+            "openFlyoutCopy": "Make the rock small enough for an Ewok to throw it. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_4>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#PROPORTION",
+            "value": "shrink",
+            "bannerCopy": "Change <kc-string-preview>grow</kc-string-preview> to <kc-string-preview>shrink</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#TARGET>shadow>input#ID",
+            "value": "Rock",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>Rock</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#VALUE>shadow>input#NUM",
+            "value": "40",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>40</kc-string-preview> to make the rock 40% smaller."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_applyForce",
+            "alias": "block_6",
+            "openFlyoutCopy": "Now to make the Ewok throw the rock at the AT-ST. Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag the <b>Object: apply force</b> block into the code space.",
+            "connectTo": "alias#block_5>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#TARGET>shadow>input#ID",
+            "value": "Rock",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>Rock</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#ANGLE>shadow>input#VALUE",
+            "value": "120",
+            "bannerCopy": "Change the <b>angle</b> from <kc-string-preview>0</kc-string-preview> to <kc-string-preview>120</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#FORCE>shadow>input#NUM",
+            "value": "40",
+            "bannerCopy": "Change the <b>strength</b> of the throw from <kc-string-preview>0</kc-string-preview> to <kc-string-preview>40</kc-string-preview>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swRightSwipe",
+           "text": "Swipe your hand right → to make the ewok on the left throw a rock at the AT-ST."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#events",
+            "blockType": "events_onSwipe",
+            "alias": "block_7",
+            "openFlyoutCopy": "Make the other Ewok throw a rock too when you swipe left. Open the ${toolbox#events} tray.",
+            "grabBlockCopy": "Drag a <b>gesture</b> block into the code space.",
+            "positionUnder": true,
+            "dropCopy": "Drop the block anywhere in your code space."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#TYPE",
+            "value": "left",
+            "bannerCopy": "Change the <kc-string-preview> <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMTUgMCAxMi40NCA0LjQzIDE3LjU2IDQuNDMgMTUgMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIxNS4xNiAzMCAxNC44NSAzMCAxNC4wOSA0LjQzIDE1LjkxIDQuNDMgMTUuMTYgMzAiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\">  Forward</kc-string-preview> swipe to a <kc-string-preview> <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMCAxNSA0LjQzIDE3LjU2IDQuNDMgMTIuNDQgMCAxNSIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIzMCAxNC44NCAzMCAxNS4xNSA0LjQzIDE1LjkxIDQuNDMgMTQuMDkgMzAgMTQuODQiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\">  Left</kc-string-preview> swipe."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_add",
+            "alias": "block_8",
+            "openFlyoutCopy": "Add a rock. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_7>input#CALLBACK",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#ID",
+            "value": "Rock",
+            "bannerCopy": "Change <kc-string-preview>Porg</kc-string-preview> to <kc-string-preview>Rock</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#POSITION>shadow>input#X>shadow>input#NUM",
+            "value": "550",
+            "bannerCopy": "Create it next to the right → Ewok by changing the <b>x</b> position to <kc-string-preview>550</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#POSITION>shadow>input#Y>shadow>input#NUM",
+            "value": "250",
+            "bannerCopy": "Change the <b>y</b> position from <kc-string-preview>300</kc-string-preview> to <kc-string-preview>250</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_scale",
+            "alias": "block_9",
+            "openFlyoutCopy": "Make this rock smaller too. Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#PROPORTION",
+            "value": "shrink",
+            "bannerCopy": "Change <kc-string-preview>grow</kc-string-preview> to <kc-string-preview>shrink</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#TARGET>shadow>input#ID",
+            "value": "Rock 2",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>Rock 2</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#VALUE>shadow>input#NUM",
+            "value": "40",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>40</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_applyForce",
+            "alias": "block_10",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_9>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_10>input#TARGET>shadow>input#ID",
+            "value": "Rock 2",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>Rock 2</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_10>input#ANGLE>shadow>input#VALUE",
+            "value": "220",
+            "bannerCopy": "Change the <b>direction</b> to <kc-string-preview>220</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_10>input#FORCE>shadow>input#NUM",
+            "value": "40",
+            "bannerCopy": "Change the <b>strength</b> to <kc-string-preview>40</kc-string-preview>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swLeftSwipe",
+           "text": "Now, swipe your hand left ← and right → to see both ewoks throw rocks."
+        },
+        {
+            "banner": {
+                "text": "I don't believe my circuits, you did it! You throw rocks very well.",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "objects": [
+            "scale",
+            "add"
+        ],
+        "position": [
+            "applyForce"
+        ],
+        "events": [
+            "onSwipe"
+        ]
+    },
+    "partsWhitelist": {},
+    "parts": []
+}

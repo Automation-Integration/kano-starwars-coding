@@ -1,0 +1,377 @@
+{
+    "version": "1.0.0",
+    "id": "galaxy_1",
+    "name": "The Cantina Band",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"l)0Frb9qEJE/?7qT`;94\\\" x=\\\"141\\\" y=\\\"115\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"></statement></block></xml>\",\"code\":\"// @challenge-id: galaxy_1\\n// @challenge-name: The Cantina Band\\n\\nevents.onStart(function() {\\n  // @challenge-start\\n  speaker.loop('gasan-loop');\\n  time.every(1, 'frames', function () {\\n    speaker.volume = forceKit.proximity('right');\\n    speaker2.volume = forceKit.proximity('left');\\n    speaker3.volume = forceKit.proximity('top');\\n    speaker4.volume = forceKit.proximity('bottom');\\n    speaker5.volume = forceKit.proximity('all');\\n  });\\n  speaker2.loop('omnibox-loop');\\n  speaker3.loop('kloohorn-loop');\\n  speaker4.loop('bandfill-loop');\\n  speaker5.loop('fanfar-loop');\\n  time.every(500, 'milliseconds', function () {\\n    forceKit.setAllLeds(colour.random());\\n    // @end-of-challenge: content\\n  });\\n\\n});\\n\",\"scene\":\"cantina\",\"parts\":[],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "banner": {
+            "text": "Droids aren’t welcome here, so we’re going to have to be quick. Can you make music with the Cantina Band?",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "alias": "start_5",
+            "parent": "block#l)0Frb9qEJE/?7qT`;94>input#CALLBACK",
+            "type": "start-step"
+        },
+        {
+            "type": "create-part",
+            "alias": "part_0",
+            "part": "speaker",
+            "openPartsCopy": "Add the first Cantina band instrument. Add a ${part.speaker} part, use the Add Parts button."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_0>toolbox",
+            "blockType": "speaker_loop",
+            "alias": "block_6",
+            "openFlyoutCopy": "Open the ${alias#part_0>toolbox} tray.",
+            "grabBlockCopy": "Drag the <b>Speaker: loop</b> block into the code space.",
+            "connectTo": "alias#start_5>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "gasan-loop",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>Gasan loop</kc-string-preview>. <b>Make sure your speakers are turned up! </b>"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "every_x_seconds",
+            "alias": "block_7",
+            "openFlyoutCopy": "Control the volume of the music with your hand. Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag the <b>Every <kc-string-preview>1</kc-string-preview> seconds</b> loop block into the code space.",
+            "connectTo": "alias#block_6>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#UNIT",
+            "value": "frames",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>frames</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_0>toolbox",
+            "blockType": "speaker_volume_set",
+            "alias": "block_8",
+            "openFlyoutCopy": "Grab a <b>volume</b> block from the ${alias#part_0>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_7>input#DO",
+            "connectCopy": "Connect it inside of your <b>Every <kc-string-preview>1</kc-string-preview> frames</b> loop."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_proximity",
+            "alias": "block_9",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>proximity</b> block into the code space.",
+            "connectTo": "alias#block_8>input#VOLUME",
+            "connectCopy": "Connect it to the speaker's <b>volume</b>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#PROPERTY",
+            "value": "right",
+            "bannerCopy": "Change <kc-string-preview>All</kc-string-preview> to <kc-string-preview>Right</kc-string-preview>. This will measure how close your hand is to the <b>right sensor</b> → on the kit."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "Move your hand left and right over the Force Kit. The Gasan instrument will get <b>louder</b> the closer your hand is to the <b>right</b> → sensor."
+        },
+        {
+            "type": "create-part",
+            "alias": "part_1",
+            "part": "speaker",
+            "openPartsCopy": "Add a second instrument to the Cantina Band. Add another ${part.speaker} part."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_1>toolbox",
+            "blockType": "speaker2_loop",
+            "alias": "block_18",
+            "openFlyoutCopy": "Open the ${alias#part_1>toolbox} tray.",
+            "grabBlockCopy": "Drag the <b>loop</b> block into the code space.",
+            "connectTo": "alias#block_7>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_18>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "omnibox-loop",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>Ommni box loop</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_1>toolbox",
+            "blockType": "speaker2_volume_set",
+            "alias": "block_10",
+            "openFlyoutCopy": "Control the volume of this loop with your hand too. Open the ${alias#part_1>toolbox} tray.",
+            "grabBlockCopy": "Drag the <b>volume</b> block into the code space.",
+            "connectTo": "alias#block_8>next",
+            "connectCopy": "Connect it <b>inside of the Every <kc-string-preview>1</kc-string-preview> frames</b> loop."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_proximity",
+            "alias": "block_11",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>proximity</b> block into the code space.",
+            "connectTo": "alias#block_10>input#VOLUME",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_11>input#PROPERTY",
+            "value": "left",
+            "bannerCopy": "Change <kc-string-preview>All</kc-string-preview> to <kc-string-preview>Left</kc-string-preview> ← from the dropdown list."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "Move your hand over the Force Kit again. Now the Ommni Box will get <b>louder</b> the closer your hand is to the <b>left</b> ← sensor."
+        },
+        {
+            "type": "create-part",
+            "alias": "part_2",
+            "part": "speaker",
+            "openPartsCopy": "Time to add the kloo horn to the Cantina Band. Add a ${part.speaker} part, use the Add Parts button."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_2>toolbox",
+            "blockType": "speaker3_loop",
+            "alias": "block_19",
+            "openFlyoutCopy": "Open the ${alias#part_2>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_18>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_19>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "kloohorn-loop",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>Kloo horn loop</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_2>toolbox",
+            "blockType": "speaker3_volume_set",
+            "alias": "block_12",
+            "openFlyoutCopy": "Open the ${alias#part_2>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_10>next",
+            "connectCopy": "Connect it inside of the <b>Every <kc-string-preview>1</kc-string-preview> frames</b> loop."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_proximity",
+            "alias": "block_13",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_12>input#VOLUME",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_13>input#PROPERTY",
+            "value": "top",
+            "bannerCopy": "This time, change <kc-string-preview>All</kc-string-preview> to <kc-string-preview>Top</kc-string-preview> from the dropdown list. The kloo horn will get louder when your hand is over the sensor at the <b>top</b> ↑ of your kit."
+        },
+        {
+            "type": "create-part",
+            "alias": "part_3",
+            "part": "speaker",
+            "openPartsCopy": "Add the Bandfill instrument to the band next. Get another ${part.speaker} part."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_3>toolbox",
+            "blockType": "speaker4_loop",
+            "alias": "block_20",
+            "openFlyoutCopy": "Open the ${alias#part_3>toolbox} tray.",
+            "grabBlockCopy": "Drag the <b>loop</b> block into the code space.",
+            "connectTo": "alias#block_19>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_20>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "bandfill-loop",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>Bandfill loop</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_3>toolbox",
+            "blockType": "speaker4_volume_set",
+            "alias": "block_14",
+            "openFlyoutCopy": "Open the ${alias#part_3>toolbox} tray.",
+            "grabBlockCopy": "Drag the <b>volume</b> block into the code space.",
+            "connectTo": "alias#block_12>next",
+            "connectCopy": "Connect it inside of the <b>Every <kc-string-preview>1</kc-string-preview> frames</b> loop."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_proximity",
+            "alias": "block_15",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>proximity</b> block into the code space.",
+            "connectTo": "alias#block_14>input#VOLUME",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#PROPERTY",
+            "value": "bottom",
+            "bannerCopy": "Change <kc-string-preview>All</kc-string-preview> to <kc-string-preview>Bottom</kc-string-preview> ↓ from the dropdown list."
+        },
+        {
+            "type": "create-part",
+            "alias": "part_4",
+            "part": "speaker",
+            "openPartsCopy": "Time to add the final instrument- the Fanfar. Add a ${part.speaker} part, use the Add Parts button."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_4>toolbox",
+            "blockType": "speaker5_loop",
+            "alias": "block_21",
+            "openFlyoutCopy": "Open the ${alias#part_4>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_20>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_21>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "fanfar-loop",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>Fanfar loop</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_4>toolbox",
+            "blockType": "speaker5_volume_set",
+            "alias": "block_16",
+            "openFlyoutCopy": "Open the ${alias#part_4>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_14>next",
+            "connectCopy": "Connect it inside of the <b>Every <kc-string-preview>1</kc-string-preview> frames</b> loop."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_proximity",
+            "alias": "block_17",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>input#VOLUME",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "every_x_seconds",
+            "alias": "block_22",
+            "openFlyoutCopy": "Finish off your code by adding some dancing party lights to your sensor. Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_21>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_22>input#INTERVAL>shadow>input#NUM",
+            "value": "500",
+            "bannerCopy": "Change <kc-string-preview>1</kc-string-preview> to <kc-string-preview>500</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_22>input#UNIT",
+            "value": "milliseconds",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>milliseconds</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_setAllLeds",
+            "alias": "block_23",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>LED Colour</b> block into the code space.",
+            "connectTo": "alias#block_22>input#DO",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#color",
+            "blockType": "random_colour",
+            "alias": "block_24",
+            "openFlyoutCopy": "Grab a <b>random colour</b> block. Open the ${toolbox#color} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_23>input#COLOR",
+            "connectCopy": "Connect to the <b>Force Kit LED colour</b> block."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swCantinaSwipe",
+           "text": "Move your hand in all directions to hear the different instruments get louder and quieter. Watch where the pointer is on the screen."
+        },
+        {
+            "banner": {
+                "text": "I always wanted to be in a band, perform around the galaxy. But I was never programmed to play the kloo horn. ",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "forceKit": [
+            "proximity",
+            "setAllLeds"
+        ],
+        "speaker5": [
+            "volume",
+            "loop"
+        ],
+        "speaker4": [
+            "volume",
+            "loop"
+        ],
+        "speaker3": [
+            "volume",
+            "loop"
+        ],
+        "speaker2": [
+            "volume",
+            "loop"
+        ],
+        "speaker": [
+            "volume",
+            "loop"
+        ],
+        "color": [
+            "random_colour"
+        ],
+        "control": [
+            "every_x_seconds"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+            "loop",
+            "volume"
+        ]
+    },
+    "parts": [
+        "speaker"
+    ]
+}

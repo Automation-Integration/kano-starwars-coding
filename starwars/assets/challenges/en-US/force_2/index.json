@@ -1,0 +1,44 @@
+{
+    "steps": [
+        {
+            "banner": {
+                "text": "**PUZZLE:** Ah, BB-8 needs some help. Use the code blocks to solve the puzzle, and guide the one-of-a-kind Droid to Poe Dameron's X-wing.",
+                "hint" :"Move BB-8 by applying a <b>force</b> to him"
+            },
+            "validation": "win"
+        },
+        {
+            "banner": {
+                "text": "That is how BB-8 rolls!",
+                "nextChallengeButton": true
+            },
+            "beacon": "banner-button:100,50"
+        }
+    ],
+    "parts": [],
+    "modules": [
+        "events",
+        "control"
+    ],
+    "variables": [],
+    "whitelist": {
+        "events": [
+            "onSwipe",
+            "whenPresent"
+        ],
+        "position": [
+            "applyForce"
+        ],
+        "forceKit": [
+            "angle"
+        ]
+    },
+    "id": "force_2",
+    "flyoutMode": true,
+
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"></xml>\",\"code\":\"\",\"scene\":\"puzzle008\",\"parts\":[],\"profile\":\"swk\"}",
+
+    "name": "Guide BB-8 to Poe's X-wing",
+    "version": "1.0.0",
+    "puzzle": true
+}

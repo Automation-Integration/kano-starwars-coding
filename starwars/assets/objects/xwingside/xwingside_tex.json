@@ -1,0 +1,1 @@
+{"SubTexture":[{"x":430,"y":1,"width":5,"name":"light","height":15},{"height":13,"y":1,"frameWidth":15,"frameX":-1,"frameHeight":14,"frameY":-1,"width":13,"name":"light-gradient","x":415},{"x":1,"y":1,"width":412,"name":"xwingside","height":151}],"width":512,"name":"xwing-side","imagePath":"xwing-side_tex.png","height":256}

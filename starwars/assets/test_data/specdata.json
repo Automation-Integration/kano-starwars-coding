@@ -1,0 +1,902 @@
+{
+    "avatarDisplay": {
+        "name": "Avatar",
+        "size": {
+            "x": 800,
+            "y": 400
+        },
+        "position": {
+            "x": 400,
+            "y": 250
+        }
+    },
+    "customisedElements": {
+        "face": {
+            "customName": "Face",
+            "emptySlot": false,
+            "customBackgrounds": ["face", "eyes"],
+            "slots": [{
+                    "name": "face_01",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_02",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_03",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_04",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_05",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_06",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_07",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_08",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_09",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "face_10",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    }
+                }
+            ]
+        },
+        "hair": {
+            "customName": "Hair",
+            "emptySlot": false,
+            "customBackgrounds": [],
+            "slots": [{
+                "name": "hair-01",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-02",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-03",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-04",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-05",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-06",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-07",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-08",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-09",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-10",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-11",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-12",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-13",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-14",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-15",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-16",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-17",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-18",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-19",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }, {
+                "name": "hair-20",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hat"],
+                "bonesToShow": ["glasses"]
+            }]
+        },
+        "glasses": {
+            "customName": "Goggles",
+            "emptySlot": true,
+            "hideWhenEmpty": ["hat"],
+            "showWhenEmpty": ["hair"],
+            "customBackgrounds": [],
+            "slots": [{
+                    "name": "welding_goggles",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    },
+                    "bonesToHide": ["hat"],
+                    "bonesToShow": ["hair"]
+                },
+                {
+                    "name": "reys_goggles",
+                    "image": true,
+                    "animation": {
+                        "animations": ["head_change"],
+                        "delay": 0
+                    },
+                    "bonesToHide": ["hat"],
+                    "bonesToShow": ["hair"]
+                }
+            ]
+        },
+        "hat": {
+            "customName": "Helmets",
+            "emptySlot": true,
+            "customBackgrounds": [],
+            "slots": [{
+                "name": "boushh",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hair", "glasses"]
+            }, {
+                "name": "lando_skiff_guard",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hair", "glasses"]
+            }, {
+                "name": "nien_nunb",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hair", "glasses"]
+            }, {
+                "name": "tie_fighter_pilot",
+                "image": true,
+                "animation": {
+                    "animations": ["head_change"],
+                    "delay": 0
+                },
+                "bonesToHide": ["hair", "glasses"]
+            }]
+        },
+        "hand_r": {
+            "customName": "Right Hand",
+            "emptySlot": true,
+            "customBackgrounds": [],
+            "slots": [{
+                    "name": "rh_cantina_drink",
+                    "image": true,
+                    "animation": {
+                        "animations": ["hand_r_switch"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "rh_bantha_milk",
+                    "image": true,
+                    "animation": {
+                        "animations": ["hand_r_switch"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "rh_thermal_detonator",
+                    "image": true,
+                    "animation": {
+                        "animations": ["hand_r_switch"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "rh_communicator",
+                    "image": true,
+                    "animation": {
+                        "animations": ["hand_r_switch"],
+                        "delay": 0
+                    }
+                }
+            ]
+        },
+        "hand_l": {
+            "customName": "Left Hand",
+            "emptySlot": true,
+            "customBackgrounds": [],
+            "slots": [{
+                    "name": "lh_luke_lightsaber",
+                    "image": true,
+                    "animation": {
+                        "animations": ["hand_l_switch"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "lh_reys_staff",
+                    "image": true,
+                    "animation": {
+                        "animations": ["hand_l_switch"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "lh_snokes_staff",
+                    "image": true,
+                    "animation": {
+                        "animations": ["hand_l_switch"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "lh_kyloren_lightsaber",
+                    "image": true,
+                    "animation": {
+                        "animations": ["hand_l_switch"],
+                        "delay": 0
+                    }
+                }
+            ]
+        },
+        "pet": {
+            "customName": "Companion",
+            "emptySlot": false,
+            "customBackgrounds": [],
+            "slots": [{
+                    "name": "companion_probe_droid",
+                    "image": true,
+                    "animation": {
+                        "animations": ["pet_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "companion_gnk_droid",
+                    "image": true,
+                    "animation": {
+                        "animations": ["pet_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "companion_bb8",
+                    "image": true,
+                    "animation": {
+                        "animations": ["pet_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "companion_bb9e",
+                    "image": true,
+                    "animation": {
+                        "animations": ["pet_change"],
+                        "delay": 0
+                    }
+                }
+            ]
+        },
+        "ground": {
+            "customName": "On the floor",
+            "emptySlot": false,
+            "customBackgrounds": [],
+            "slots": [{
+                    "name": "ground_reys_speeder",
+                    "image": true,
+                    "animation": {
+                        "animations": ["floor_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "ground_lukes_speeder",
+                    "image": true,
+                    "animation": {
+                        "animations": ["floor_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "ground_sandcrawler",
+                    "image": true,
+                    "animation": {
+                        "animations": ["floor_change"],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "ground_scout_speeder",
+                    "image": true,
+                    "animation": {
+                        "animations": ["floor_change"],
+                        "delay": 0
+                    }
+                }
+            ]
+        },
+        "flying": {
+            "customName": "Flying",
+            "emptySlot": false,
+            "customBackgrounds": [],
+            "slots": [{
+                    "name": "air_death_star",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    }
+                }, {
+                    "name": "air_endor",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    }
+                }, {
+                    "name": "air_jakku",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    }
+                }, {
+                    "name": "air_jedi_trainng_droid",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    }
+                }
+            ]
+        },
+        "body": {
+            "customName": "Clothes",
+            "emptySlot": false,
+            "customBackgrounds": [],
+            "slots": [{
+                    "name": "shirt_han_solo",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    },
+                    "set": [{
+                            "bone": "arm_l",
+                            "slot": "shirt_han_solo_arm_r"
+                        },
+                        {
+                            "bone": "arm_r",
+                            "slot": "shirt_han_solo_arm_l"
+                        }
+                    ]
+                    }, {
+                        "name": "shirt_han_solob",
+                        "image": true,
+                        "animation": {
+                            "animations": [],
+                            "delay": 0
+                        },
+                        "set": [{
+                                "bone": "arm_l",
+                                "slot": "shirt_han_solob_arm_r"
+                            },
+                            {
+                                "bone": "arm_r",
+                                "slot": "shirt_han_solob_arm_l"
+                            }
+                        ]
+                    }, {
+                        "name": "shirt_imperial_officer",
+                        "image": true,
+                        "animation": {
+                            "animations": [],
+                            "delay": 0
+                        },
+                        "set": [{
+                                "bone": "arm_l",
+                                "slot": "shirt_imperial_officer_arm_r"
+                            },
+                            {
+                                "bone": "arm_r",
+                                "slot": "shirt_imperial_officer_arm_l"
+                            }
+                        ]
+                    }, {
+                        "name": "shirt_pose_tico",
+                        "image": true,
+                        "animation": {
+                            "animations": [],
+                            "delay": 0
+                        },
+                        "set": [{
+                                "bone": "arm_l",
+                                "slot": "shirt_pose_tico_arm_r"
+                            },
+                            {
+                                "bone": "arm_r",
+                                "slot": "shirt_pose_tico_arm_l"
+                            }
+                        ]
+                    }, {
+                        "name": "uniform_firstorder",
+                        "image": true,
+                        "animation": {
+                            "animations": [],
+                            "delay": 0
+                        },
+                        "set": [{
+                                "bone": "arm_l",
+                                "slot": "uniform_firstorder_arm_r"
+                            },
+                            {
+                                "bone": "arm_r",
+                                "slot": "uniform_firstorder_arm_l"
+                            }
+                        ]
+                    }
+            ]
+        },
+        "body_accessory": {
+            "customName": "Accessories",
+            "emptySlot": true,
+            "customBackgrounds": [],
+            "slots": [{
+                    "name": "electrobinoculars",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "pauldron",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "pt_medallion",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    }
+                },
+                {
+                    "name": "rt_medallion",
+                    "image": true,
+                    "animation": {
+                        "animations": [],
+                        "delay": 0
+                    }
+                }
+            ]
+        }
+    },
+    "categories": [{
+            "id": "head",
+            "name": "Head",
+            "list": ["glasses", "face", "hair", "hat"]
+        },
+        {
+            "id": "body",
+            "name": "Body",
+            "list": ["body", "body_accessory"]
+        },
+        {
+            "id": "accessories",
+            "name": "Accessories",
+            "list": ["hand_r", "hand_l"]
+        },
+        {
+            "id": "creatures",
+            "name": "Companions",
+            "list": ["pet"]
+        },
+        {
+            "id": "artefacts",
+            "name": "Objects",
+            "list": ["flying", "ground"]
+        }
+    ],
+    "customBackgrounds": [{
+            "name": "face_08",
+            "url": "../src/images/face_blank.png",
+            "width": 300,
+            "height": 300,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "name": "eyes",
+            "url": "../src/images/eye_both.png",
+            "width": 100,
+            "height": 14,
+            "x": 100,
+            "y": 100
+        }
+    ],
+    "colorEls": {
+        "skin": {
+            "label": "Skintone",
+            "list": [{
+                    "uid": 0,
+                    "hue": "#281818",
+                    "brightness": "ffffff",
+                    "display": "#281818"
+                    }, {
+                        "uid": 1,
+                        "hue": "#3B201E",
+                        "brightness": "fefefe",
+                        "display": "#3B201E"
+                    }, {
+                        "uid": 2,
+                        "hue": "#A45D31",
+                        "brightness": "ffffff",
+                        "display": "#A45D31"
+                    }, {
+                        "uid": 3,
+                        "hue": "#B97753",
+                        "brightness": "fefefe",
+                        "display": "#B97753"
+                    }, {
+                        "uid": 4,
+                        "hue": "#D19E7F",
+                        "brightness": "ffffff",
+                        "display": "#D19E7F"
+                    }, {
+                        "uid": 5,
+                        "hue": "#E6B492",
+                        "brightness": "fefefe",
+                        "display": "#E6B492"
+                    }, {
+                        "uid": 6,
+                        "hue": "#FFF1E6",
+                        "brightness": "ffffff",
+                        "display": "#FFF1E6"
+                    }, {
+                        "uid": 7,
+                        "hue": "#DD6512",
+                        "brightness": "fefefe",
+                        "display": "#DD6512"
+                    }, {
+                        "uid": 8,
+                        "hue": "#2ABBF4",
+                        "brightness": "ffffff",
+                        "display": "#2ABBF4"
+                    }, {
+                        "uid": 9,
+                        "hue": "#7FE425",
+                        "brightness": "fefefe",
+                        "display": "#7FE425"
+                    }, {
+                        "uid": 10,
+                        "hue": "#6500A2",
+                        "brightness": "ffffff",
+                        "display": "#6500A2"
+                    }, {
+                        "uid": 11,
+                        "hue": "#B97753",
+                        "brightness": "fefefe",
+                        "display": "#B97753"
+                    }, {
+                        "uid": 12,
+                        "hue": "#DB1B1B",
+                        "brightness": "ffffff",
+                        "display": "#DB1B1B"
+                    }
+            ],
+            "default": {
+                "uid": 5,
+                "hue": "#E6B492",
+                "brightness": "fefefe",
+                "display": "#E6B492"
+            },
+            "bonesToColor": ["head", "hand_r_body", "hand_l_body", "neck"],
+            "relatedBones": ["face"]
+        },
+        "hair": {
+            "label": "Hair Color",
+            "list": [{
+                    "uid": 0,
+                    "hue": "#1a1a1a",
+                    "brightness": "ffffff",
+                    "display": "#1a1a1a"
+                },
+                {
+                    "uid": 1,
+                    "hue": "#80532B",
+                    "brightness": "fefefe",
+                    "display": "#80532B"
+                },
+                {
+                    "uid": 2,
+                    "hue": "#986446",
+                    "brightness": "ffffff",
+                    "display": "#986446"
+                },
+                {
+                    "uid": 3,
+                    "hue": "#D48E2B",
+                    "brightness": "fefefe",
+                    "display": "#D48E2B"
+                },
+                {
+                    "uid": 4,
+                    "hue": "#FF7C00",
+                    "brightness": "000000",
+                    "display": "#FF7C00"
+                },
+                {
+                    "uid": 5,
+                    "hue": "#EFB229",
+                    "brightness": "fefefe",
+                    "display": "#EFB229"
+                },
+                {
+                    "uid": 6,
+                    "hue": "#FFE7A8",
+                    "brightness": "ffffff",
+                    "display": "#FFE7A8"
+                },
+                {
+                    "uid": 7,
+                    "hue": "#AFAFAF",
+                    "brightness": "fefefe",
+                    "display": "#AFAFAF"
+                },
+                {
+                    "uid": 8,
+                    "hue": "#D8D8D8",
+                    "brightness": "ffffff",
+                    "display": "#D8D8D8"
+                },
+                {
+                    "uid": 9,
+                    "hue": "#2ABBF4",
+                    "brightness": "fefefe",
+                    "display": "#2ABBF4"
+                },
+                {
+                    "uid": 10,
+                    "hue": "#00E74F",
+                    "brightness": "ffffff",
+                    "display": "#00E74F"
+                },
+                {
+                    "uid": 11,
+                    "hue": "#6500A2",
+                    "brightness": "fefefe",
+                    "display": "#6500A2"
+                },
+                {
+                    "uid": 12,
+                    "hue": "#F917FF",
+                    "brightness": "ffffff",
+                    "display": "#F917FF"
+                }
+            ],
+            "default": {
+                "uid": 1,
+                "hue": "#80532B",
+                "brightness": "fefefe",
+                "display": "#80532B"
+            },
+            "bonesToColor": ["hair"],
+            "relatedBones": ["hair"]
+
+        }
+    },
+    "avatar": {
+        "idle": "idle_2",
+        "default": {
+            "colorEls": {
+                "hair": 1,
+                "skin": 4
+            },
+            "hiddenBones": ["hat"],
+            "slots": {
+                "body": "shirt_empire",
+                "body_accessory": "",
+                "hair": "hair-02",
+                "hat": "",
+                "hand_l": "",
+                "hand_r": "",
+                "glasses": "",
+                "face": "face_01",
+                "pet": "companion_porg",
+                "ground": "ground_atat_walker",
+                "flying": "air_death_star"
+            }
+        }
+    }
+}

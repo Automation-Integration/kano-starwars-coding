@@ -1,0 +1,260 @@
+{
+    "version": "1.0.0",
+    "id": "force_3",
+    "name": "Force Push",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><variables><variable type=\\\"\\\" id=\\\"_*2f0GX`aEb;6D%?RTR/\\\">stormtrooperSize</variable></variables</xml>\",\"code\":\"{\\n\\n});\\n\",\"scene\":\"loading-bay-stormtroopers\",\"parts\":[],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "banner": {
+                "text": "Stormtroopers are elite troops loyal to the Empire. Can you evade them with a Force push?",
+                "nextButton": true,
+                "disableInput": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#events",
+            "blockType": "events_onSwipe",
+            "alias": "block_0",
+            "openFlyoutCopy": "Start by opening the ${toolbox#events} tray.",
+            "grabBlockCopy": "Drag the <kc-string-preview> on Force Kit <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMTUgMCAxMi40NCA0LjQzIDE3LjU2IDQuNDMgMTUgMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIxNS4xNiAzMCAxNC44NSAzMCAxNC4wOSA0LjQzIDE1LjkxIDQuNDMgMTUuMTYgMzAiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\"></kc-string-preview> block into the code space.",
+            "positionUnder": true,
+            "dropCopy": "Drop the block into your code space."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_applyForce",
+            "alias": "block_1",
+            "openFlyoutCopy": "Apply a force to the Stormtroopers so they move when you push them. Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag the <b>Object: apply force</b> block into the code space.",
+            "connectTo": "alias#block_0>input#CALLBACK",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_1>input#FORCE>shadow>input#NUM",
+            "value": "500",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>500</kc-string-preview>. The stronger the force, the higher the Stormtroopers will go."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swPushSwipe",
+            "text": "Test your strength by pushing your hand forward over the sensors. The Stormtroopers should move upwards. Shall we make them fall over?"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_applySpin",
+            "alias": "block_2",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_1>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#TARGET>shadow>input#ID",
+            "value": "Stormtrooper",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>Stormtrooper</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#SPEED>shadow>input#NUM",
+            "value": "-2",
+            "bannerCopy": "Change <kc-string-preview>50</kc-string-preview> to <kc-string-preview>-2</kc-string-preview> to turn the Stormtrooper a little left."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_applySpin",
+            "alias": "block_3",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#TARGET>shadow>input#ID",
+            "value": "Stormtrooper 2",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>Stormtrooper 2</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#SPEED>shadow>input#NUM",
+            "value": "3",
+            "bannerCopy": "Change <kc-string-preview>50</kc-string-preview> to <kc-string-preview>3</kc-string-preview> to tilt the other Stormtrooper a bit to the right."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_4",
+            "openFlyoutCopy": "Make the Stormtroopers get smaller when they're pushed so it looks like they're getting further away. Open up the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_3>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#VAR",
+            "value": "stormtrooperSize",
+            "bannerCopy": "<b>Variables</b> are a way of storing a number so you can use it later on in your code. Change the name of your variable from <kc-string-preview>item</kc-string-preview> to <kc-string-preview>stormtrooperSize</kc-string-preview>. "
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_number",
+            "alias": "block_5",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_4>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#NUM",
+            "value": "100",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>100</kc-string-preview>. Now the <b>stormtrooperSize</b> variable is equal to 100."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "every_x_seconds",
+            "alias": "block_6",
+            "openFlyoutCopy": "Open the ${toolbox#control} tray to get a loop block",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_4>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#UNIT",
+            "value": "frames",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>frames</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "unary",
+            "alias": "block_7",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_6>input#DO",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#LEFT_HAND",
+            "value": "stormtrooperSize",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>stormtrooperSize</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#OPERATOR",
+            "value": "-=",
+            "bannerCopy": "Change <kc-string-preview>+=</kc-string-preview> to <kc-string-preview>-=</kc-string-preview> from the dropdown list. This will make the <kc-string-preview>stormtrooperSize</kc-string-preview> number go down by 1 every frame."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_scale",
+            "alias": "block_8",
+            "openFlyoutCopy": "Open the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_7>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#PROPORTION",
+            "value": "set",
+            "bannerCopy": "This block will set the size of the Stormtroopers. Change <kc-string-preview>grow</kc-string-preview> to <kc-string-preview>set</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_constrain",
+            "alias": "block_9",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_10",
+            "openFlyoutCopy": "Time to use your <kc-string-preview>stormtrooperSize</kc-string-preview> variable to set the size of the Stormtroopers. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_9>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_10>input#VAR",
+            "value": "stormtrooperSize",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>stormtrooperSize</kc-string-preview>."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swPushSwipe",
+            "text": "Try another Force push. Did you see the Stormtroopers vanish? Adding numbers to the constrain block will stop this from happening."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#LOW>shadow>input#NUM",
+            "value": "80",
+            "bannerCopy": "Change the first number from <kc-string-preview>0</kc-string-preview> to <kc-string-preview>80</kc-string-preview>. This is the smallest the Stormtroopers will go."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#HIGH>shadow>input#NUM",
+            "value": "100",
+            "bannerCopy": "Change the second number from <kc-string-preview>0</kc-string-preview> to <kc-string-preview>100</kc-string-preview>. This is their full size, 100%."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swPushSwipe",
+            "text": "Stop the troopers! Perform a Force Push to knock them back."
+        },
+        {
+            "banner": {
+                "text": "Hmm... your powers are growing. But are you ready to meet a true Jedi Master?",
+                "nextChallengeButton": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "variables": [
+            "variables_get",
+            "variables_set"
+        ],
+        "math": [
+            "math_number",
+            "math_constrain",
+            "unary"
+        ],
+        "objects": [
+            "scale"
+        ],
+        "control": [
+            "every_x_seconds"
+        ],
+        "position": [
+            "applySpin",
+            "applyForce"
+        ],
+        "events": [
+            "onSwipe"
+        ]
+    },
+    "partsWhitelist": {},
+    "parts": []
+}

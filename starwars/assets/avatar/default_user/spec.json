@@ -1,0 +1,20 @@
+{
+    "colorEls": {
+        "hair": 2,
+        "skin": 4
+    },
+    "hiddenBones": ["hat"],
+    "slots": {
+        "body": "shirt_han_solo",
+        "body_accessory": "",
+        "face": "face_01",
+        "flying": "air_endor",
+        "glasses": "",
+        "ground": "ground_reys_speeder",
+        "hair": "hair-02",
+        "hand_l": "",
+        "hand_r": "",
+        "hat": "",
+        "pet": "companion_bb8"
+    }
+}

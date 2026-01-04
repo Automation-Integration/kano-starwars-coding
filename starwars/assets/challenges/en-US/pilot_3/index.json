@@ -1,0 +1,38 @@
+{
+    "steps": [
+        {
+            "banner": {
+                "text": "**PUZZLE:** Do you want to know the possibility of successfully navigating an asteroid field? It's not good. Use your skills to make sure the <i>Falcon</i> escapes the asteroids.",
+                "hint" :"<b>Apply force</b> to the <i>Millennium Falcon</i> to steer it safely past the asteroids."
+            },
+            "validation": "win"
+        },
+        {
+            "banner": {
+                "text": "Huh... I wasn't expecting that. Well done!",
+                "nextChallengeButton": true
+            }
+        }
+    ],
+    "parts": [],
+    "modules": [
+    ],
+    "whitelist": {
+        "events": [
+            "whenPresent"
+        ],
+        "forceKit": [
+            "angle",
+            "height"
+        ],
+        "position": [
+            "applyForce"
+        ]
+    },
+    "variables": [],
+    "flyoutMode": true,
+    "id": "pilot_3",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http:\/\/www.w3.org\/1999\/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"_rofODeViH+F\/+_nsV86\\\" x=\\\"-2000\\\" y=\\\"-2500\\\"><field name=\\\"FLASH\\\"><\/field><\/block><\/xml>\",\"scene\":\"puzzle014\",\"parts\":[],\"profile\":\"swk\"}",
+    "name": "Puzzle: Avoid Asteroids",
+    "version": "1.0.0"
+}

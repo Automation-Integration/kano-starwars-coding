@@ -1,0 +1,695 @@
+{
+    "version": "1.0.0",
+    "id": "galaxy_3",
+    "name": "Force Lightning",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><variables><variable type=\\\"\\\" id=\\\"*fX@$eA|iyrZ/F[+]4u9\\\">color</variable><variable type=\\\"\\\" id=\\\"@h,pHb0~BfXiC{K%P0`+\\\">xPosition</variable><variable type=\\\"\\\" id=\\\"/o_E)fVQ%l@J?J9KxuXc\\\">lightningX</variable></variables><block type=\\\"events_onStart\\\" id=\\\"aP%Qfj@$WcjGETDO=0eJ\\\" x=\\\"46\\\" y=\\\"60\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"objects_add\\\" id=\\\"kbdvAO`FrB[RDW1J~FvE\\\"><field name=\\\"ID\\\">Emperor Palpatine</field><field name=\\\"NAME\\\">Emperor Palpatine</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"X;EkJ,*+7|L7[v+r-lHS\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"v8=wkVFmrMS?`Za2VEYR\\\"><field name=\\\"NUM\\\">400</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"+rQk)qV)M?7llTJLdNU7\\\"><field name=\\\"NUM\\\">285</field></shadow></value></shadow></value><next><block type=\\\"objects_scale\\\" id=\\\"riV6,QbL8pK|^3!`gOju\\\"><field name=\\\"PROPORTION\\\">set</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"HF4MBG$u;?i1!w[5u,[3\\\"><field name=\\\"ID\\\">all</field></shadow></value><value name=\\\"VALUE\\\"><shadow type=\\\"math_number\\\" id=\\\"=7TqbsyPoszeQxN$Sso^\\\"><field name=\\\"NUM\\\">45</field></shadow></value><next><block type=\\\"speaker_loop\\\" id=\\\"wBWCo/qCuT?$K3[(4a-i\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"~-^QI=%@)S5qkse,D*ag\\\"><field name=\\\"SAMPLE\\\">Force lightning</field></shadow></value><next><block type=\\\"every_x_seconds\\\" id=\\\"1k,J0dNHDxn*zw?D=-y4\\\"><field name=\\\"UNIT\\\">frames</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"k~(Tw(}L[esvlZiV?1Jk\\\"><field name=\\\"NUM\\\">3</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"speaker_volume_set\\\" id=\\\"`bFehb4jOeVlttpm$Sk3\\\"><value name=\\\"VOLUME\\\"><shadow type=\\\"math_number\\\" id=\\\"={tNIIrxQptlnqi3$/Xs\\\"><field name=\\\"NUM\\\">100</field></shadow><block type=\\\"forceKit_proximity\\\" id=\\\"!W^KUdCvlV+e+g_ZOcT;\\\"><field name=\\\"PROPERTY\\\">all</field></block></value><next></next></block></statement></block></next></block></next></block></next></block></statement></block></xml>\",\"code\":\"var color, xPosition, lightningX;\\n\\n\\n// @challenge-id: galaxy_3\\n// @challenge-name: Force Lightning\\n\\nevents.onStart(function() {\\n  objects.add('Emperor Palpatine', 'Emperor Palpatine', position.create(400, 285));\\n  objects.scale('set', objects.get('all'), 'by', 45);\\n  speaker.loop('Force lightning');\\n  time.every(3, 'frames', function () {\\n    speaker.volume = forceKit.proximity('all');\\n    // @challenge-start\\n    color = colour.lerp('#4527A0', '#B3E5FC', math.random(0, 100));\\n    forceKit.setFeedbackLeds(color);\\n    ctx.reset();\\n    if (forceKit.presence == true) {\\n      for (var i2 = 0; i2 < 2; i2++) {\\n        ctx.stroke(color, math.random(1, 3));\\n        xPosition = position.get('x', objects.getRandom('Emperor Palpatine')) - 30;\\n        yPosition = position.get('y', objects.getRandom('Emperor Palpatine')) + 30;\\n        ctx.moveTo(xPosition, yPosition);\\n        for (var i = 0; i < 20; i++) {\\n          lightningX = math.random(-15, 15) + math.lerp(-5, 8, forceKit.x);\\n          lightningY = math.lerp(14, 1, forceKit.height);\\n          ctx.line(lightningX, lightningY);\\n          ctx.move(lightningX, lightningY);\\n          xPosition += lightningX;\\n          yPosition += lightningY;\\n        }\\n      }\\n      particle.bang(position.create(xPosition, yPosition), 1, '#C5CAE9');\\n      particle.setType('spark');\\n      particle.setWind(180, 10);\\n      // @end-of-challenge: content\\n    }\\n  });\\n\\n});\\n\",\"scene\":\"deathstar-throne\",\"parts\":[{\"type\":\"speaker\", \"id\":\"speaker\"}],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "banner": {
+                "text": "True Sith, such as Emperor Palpatine, can conjure Force lightning from their hands by calling on their hatred and aggressive feelings.",
+                "nextButton": true,
+                "disableInput": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "alias": "start_1",
+            "parent": "block#`bFehb4jOeVlttpm$Sk3>next",
+            "type": "start-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_2",
+            "openFlyoutCopy": "Start by making a <b>variable</b> to store the color of the lightning. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#start_1>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#VAR",
+            "value": "color",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>color</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#color",
+            "blockType": "color_lerp",
+            "alias": "block_3",
+            "openFlyoutCopy": "Open the ${toolbox#color} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>input#VALUE",
+            "connectCopy": "Connect to the <kc-string-preview>color</kc-string-preview> <b>variable</b>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#FROM>shadow>input#COLOUR",
+            "value": "#4527A0",
+            "bannerCopy": "Change <kc-color-preview color=\"#000000\"></kc-color-preview> to a dark purple, like <kc-color-preview color=\"#4527A0\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#TO>shadow>input#COLOUR",
+            "value": "#B3E5FC",
+            "bannerCopy": "Change <kc-color-preview color=\"#ffffff\"></kc-color-preview> to a light blue <kc-color-preview color=\"#B3E5FC\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_4",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag the <b>random number</b> block into the code space.",
+            "connectTo": "alias#block_3>input#PERCENT",
+            "connectCopy": "Connect to the <b>lerp %</b>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#MAX>shadow>input#NUM",
+            "value": "100",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>100</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_setFeedbackLeds",
+            "alias": "block_5",
+            "openFlyoutCopy": "Set the color of The Force Kit's LED's using the color variable. Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_6",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_5>input#COLOR",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#VAR",
+            "value": "color",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>color</kc-string-preview>."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swForceLightningSwipe",
+            "text": "Stop reading this and look at the kit. Put your hand over it to see the lights flash. "
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#draw",
+            "blockType": "draw_clear",
+            "alias": "block_7",
+            "openFlyoutCopy": "Before you start drawing the lightning, add a <b>clear drawing</b> block to your code. Open the ${toolbox#draw} tray.",
+            "grabBlockCopy": "Drag the <b>clear drawing</b> block into the code space.",
+            "connectTo": "alias#block_5>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "controls_if",
+            "alias": "block_8",
+            "openFlyoutCopy": "Draw the lightning onto the canvas when your hand is above the sensor. Open the ${toolbox#logic} tray and make an <b> if statement</b>.",
+            "grabBlockCopy": "Drag the <b>if</b> block into the code space.",
+            "connectTo": "alias#block_7>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "logic_compare",
+            "alias": "block_9",
+            "openFlyoutCopy": "Open the ${toolbox#logic} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#IF0",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_presence_get",
+            "alias": "block_10",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>Force Kit: presence</b> block into the code space.",
+            "connectTo": "alias#block_9>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#logic",
+            "blockType": "logic_boolean",
+            "alias": "block_11",
+            "openFlyoutCopy": "Open the ${toolbox#logic} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_9>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "repeat_x_times",
+            "alias": "block_12",
+            "openFlyoutCopy": "Whenever your hand is over The Force Kit sensors, whatever code you put inside of this <b>if statement</b> will run. Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#DO0",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_12>input#N>shadow>input#NUM",
+            "value": "2",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>2</kc-string-preview> to repeat the code 2 times and create 2 bolts of lightning."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#draw",
+            "blockType": "draw_stroke",
+            "alias": "block_13",
+            "openFlyoutCopy": "Set the thickness and color of the lightning. Open the ${toolbox#draw} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_12>input#DO",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_14",
+            "openFlyoutCopy": "Use the variable you made earlier to set the color of your lightning. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_13>input#COLOR",
+            "connectCopy": "Connect to the <b>stroke color</b> block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_14>input#VAR",
+            "value": "color",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>color</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_15",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag the <b>random number</b> block into the code space.",
+            "connectTo": "alias#block_13>input#SIZE",
+            "connectCopy": "Connect to the <b>stroke thickness</b>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#MIN>shadow>input#NUM",
+            "value": "1",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>1</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#MAX>shadow>input#NUM",
+            "value": "3",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>3</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_16",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_13>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_16>input#VAR",
+            "value": "xPosition",
+            "bannerCopy": "You're going to use this variable to set the x position of where the lightning starts, so change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>xPosition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_17",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_get",
+            "alias": "block_18",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_17>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_18>input#TARGET>shadow>input#ID",
+            "value": "Emperor Palpatine",
+            "bannerCopy": "Change <kc-string-preview>random</kc-string-preview> to <kc-string-preview>Emperor Palpatine</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#OP",
+            "value": "MINUS",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>-</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#B>shadow>input#NUM",
+            "value": "30",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>30</kc-string-preview>. This will start the lightning at Emperor Palpatine's left hand."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#draw",
+            "blockType": "draw_move_to",
+            "alias": "block_25",
+            "openFlyoutCopy": "Open the ${toolbox#draw} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_26",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_25>input#X",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_26>input#VAR",
+            "value": "xPosition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>xPosition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_27",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_25>input#Y",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_get",
+            "alias": "block_28",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_27>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_28>input#PROPERTY",
+            "value": "y",
+            "bannerCopy": "Change <kc-string-preview>x position</kc-string-preview> to <kc-string-preview>y position</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_28>input#TARGET>shadow>input#ID",
+            "value": "Emperor Palpatine",
+            "bannerCopy": "Change <kc-string-preview>random</kc-string-preview> to <kc-string-preview>Emperor Palpatine</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_27>input#B>shadow>input#NUM",
+            "value": "30",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>30</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "repeat_x_times",
+            "alias": "block_29",
+            "openFlyoutCopy": "Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag the <b>Repeat</b> block into the code space.",
+            "connectTo": "alias#block_25>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_29>input#N>shadow>input#NUM",
+            "value": "20",
+            "bannerCopy": "Change the number of repeats from <kc-string-preview>10</kc-string-preview> to <kc-string-preview>20</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_30",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_29>input#DO",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_30>input#VAR",
+            "value": "lightningX",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>lightningX</kc-string-preview>. This is the <b>variable</b> you'll be using to set how far left and right the lightning will be drawn."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_31",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_30>input#VALUE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_32",
+            "openFlyoutCopy": "Get a <b>random number</b> block from the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag a <b>random number</b> block into the code space.",
+            "connectTo": "alias#block_31>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_32>input#MIN>shadow>input#NUM",
+            "value": "-15",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>-15</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_32>input#MAX>shadow>input#NUM",
+            "value": "15",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>15</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_lerp",
+            "alias": "block_33",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_31>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_33>input#FROM>shadow>input#NUM",
+            "value": "-5",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>-5</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_33>input#TO>shadow>input#NUM",
+            "value": "8",
+            "bannerCopy": "Change <kc-string-preview>200</kc-string-preview> to <kc-string-preview>8</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_34",
+            "openFlyoutCopy": "Control the direction of the lightning with The Force Kit. Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_33>input#PERCENT",
+            "connectCopy": "Connect to the <b>lerp % percentage</b>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#draw",
+            "blockType": "draw_line",
+            "alias": "block_35",
+            "openFlyoutCopy": "Time to start drawing the lightning. Open the ${toolbox#draw} tray.",
+            "grabBlockCopy": "Drag the <b>line</b> block into the code space.",
+            "connectTo": "alias#block_30>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_36",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_35>input#X",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_36>input#VAR",
+            "value": "lightningX",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>lightningX</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_35>input#Y>shadow>input#NUM",
+            "value": "10",
+            "bannerCopy": "Change <kc-string-preview>5</kc-string-preview> to <kc-string-preview>10</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#draw",
+            "blockType": "draw_move",
+            "alias": "block_37",
+            "openFlyoutCopy": "Open the ${toolbox#draw} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_35>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_38",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_37>input#X",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_38>input#VAR",
+            "value": "lightningX",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>lightningX</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_37>input#Y>shadow>input#NUM",
+            "value": "10",
+            "bannerCopy": "Change <kc-string-preview>5</kc-string-preview> to <kc-string-preview>10</kc-string-preview>."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swForceLightningSwipe",
+            "text": "Oooh... Move your hand left and right to control the lightning."
+        },
+        {
+            "banner": {
+                "text": "When your hand is over the sensors, the <b>line along</b> block draws a short line to the left or right using the lightningX variable, then moves down by 10 pixels and repeats 20 times to make a single bolt of lightning.",
+                "nextButton": true,
+                "disableInput": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "unary",
+            "alias": "block_39",
+            "openFlyoutCopy": "Add the finishing touch to your code by adding some sparks to your lightning. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_37>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_39>input#LEFT_HAND",
+            "value": "xPosition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>xPosition</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_40",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_39>input#RIGHT_HAND",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_40>input#VAR",
+            "value": "lightningX",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>lightningX</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setType",
+            "alias": "block_43",
+            "openFlyoutCopy": "Change the shape of the particles from circles to <b>sparks</b>. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_29>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_43>input#TYPE",
+            "value": "spark",
+            "bannerCopy": "Change <kc-string-preview>circle</kc-string-preview> to <kc-string-preview>spark</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_bang",
+            "alias": "block_41",
+            "openFlyoutCopy": "Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag the <b>Particle: bang</b> block into the code space.",
+            "connectTo": "alias#block_43>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_42",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_41>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to the <b>x position</b> of the <b>Particle: bang</b> block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_42>input#VAR",
+            "value": "xPosition",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>xPosition</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_41>input#POSITION>shadow>input#Y>shadow>input#NUM",
+            "value": "500",
+            "bannerCopy": "Change the <b>y position</b> of the particles to <kc-string-preview>500</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_41>input#STRENGTH>shadow>input#NUM",
+            "value": "1",
+            "bannerCopy": "Change the <b>strength</b> of the particle bang from <kc-string-preview>10</kc-string-preview> to <kc-string-preview>1</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_41>input#COLOR>shadow>input#COLOUR",
+            "value": "#C5CAE9",
+            "bannerCopy": "Change <kc-color-preview color=\"#000000\"></kc-color-preview> to a light purple or gray color, like <kc-color-preview color=\"#C5CAE9\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setWind",
+            "alias": "block_44",
+            "openFlyoutCopy": "Change the direction of the particles with a <b>wind</b> block. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_41>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_44>input#ANGLE>shadow>input#VALUE",
+            "value": "180",
+            "bannerCopy": "Change <kc-string-preview>45</kc-string-preview> to <kc-string-preview>180</kc-string-preview> to make the particles fall down."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swForceLightningSwipe",
+            "text": "Now you should see some ~~pretty~~ evil sparks where the lightning strikes."
+        },
+        {
+            "banner": {
+                "text": "Most impressive. Your skills are almost complete. But don’t get delusions of grandeur.",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "partsWhitelist": {
+        "speaker": [
+            "volume",
+            "loop"
+        ]
+    },
+    "parts": [
+        "speaker"
+    ],
+    "whitelist": {
+        "math": [
+            "math_random",
+            "math_arithmetic",
+            "math_lerp",
+            "unary"
+        ],
+        "color": [
+            "color_lerp"
+        ],
+        "variables": [
+            "variables_get",
+            "math_number",
+            "variables_set"
+        ],
+        "forceKit": [
+            "presence",
+            "x",
+            "height",
+            "setFeedbackLeds"
+        ],
+        "logic": [
+            "logic_boolean",
+            "logic_compare",
+            "controls_if"
+        ],
+        "position": [
+            "get"
+        ],
+        "ctx": [
+            "draw_move",
+            "draw_line",
+            "draw_move_to",
+            "draw_stroke",
+            "draw_clear"
+        ],
+        "control": [
+            "repeat_x_times"
+        ],
+        "particle": [
+            "setWind",
+            "setType",
+            "bang"
+        ],
+        "speaker": [
+            "speaker_loop",
+            "speaker_volume_set"
+        ]
+    }
+
+}

@@ -1,0 +1,1 @@
+{"SubTexture":[{"x":208,"y":71,"width":31,"name":"rightleg","height":30},{"x":175,"y":71,"width":31,"name":"leftleg","height":30},{"x":175,"y":1,"width":29,"name":"leftarm","height":66},{"x":206,"y":1,"width":26,"name":"rightarm","height":68},{"x":1,"y":1,"width":172,"name":"torso","height":268}],"width":256,"name":"tiepilot","imagePath":"tiepilot_tex.png","height":512}

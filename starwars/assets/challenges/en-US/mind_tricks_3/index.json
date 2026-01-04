@@ -1,0 +1,55 @@
+{
+    "steps": [
+        {
+            "banner": {
+                "text": "**PUZZLE:** Use your impressive new powers to solve the puzzle, and make the Stormtroopers walk off the screen.",
+                "hint" :"Try using a <b>lerp</b> block inside of a <b>every 1 frame loop</b> to move the Stormtroopers off the canvas."
+            },
+            "validation": "win"
+        },
+        {
+            "banner": {
+                "text": "You did it! Now Obi-Wan Kenobi can escape… oh wait, escape is not his plan.",
+                "nextChallengeButton": true
+            },
+            "beacon": "banner-button:100,50"
+        }
+    ],
+    "parts": [
+        "speaker"
+    ],
+    "modules": [
+        "events",
+        "control"
+    ],
+    "variables": [],
+    "whitelist": {
+        "control": [
+            "every_x_seconds",
+            "in_x_time"
+
+    ],
+    "position": [
+        "applyForce",
+        "lerpTowards"
+    ],
+    "forceKit": [
+        "angle",
+        "x"
+    ],
+    "speaker": [
+        "speaker_play"
+    ]
+
+
+    },
+
+    "id": "mind_tricks_3",
+    "flyoutMode": true,
+
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onSwipe\\\" id=\\\"i[G?lXmdIM8oz@l!BXq+\\\" x=\\\"350\\\" y=\\\"200\\\"><field name=\\\"FLASH\\\"></field><field name=\\\"TYPE\\\">right</field><statement name=\\\"CALLBACK\\\"><block type=\\\"speaker_play\\\" id=\\\"|6R}Tg}CisJXwP!LZTwe\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"_;=%|QGnakCX6K^UGUS!\\\"><field name=\\\"SAMPLE\\\">Mind trick</field></shadow></value><next><block type=\\\"objects_say\\\" id=\\\"Z6ueeAq9O/}w1;`]T^cO\\\"><value name=\\\"OBJECT\\\"><shadow type=\\\"objects_getRandom\\\" id=\\\"LCh+n_ix$@Fkr,vV3;qt\\\"><field name=\\\"ID\\\">random</field></shadow></value><value name=\\\"TEXT\\\"><shadow type=\\\"text\\\" id=\\\"vtZg;HXAg0-F)-NIT76E\\\"><field name=\\\"TEXT\\\"></field></shadow><block type=\\\"objects_quote\\\" id=\\\"YMd@wc1day}lSv)yXdV0\\\"><field name=\\\"QUOTE\\\">Move along.</field></block></value><value name=\\\"TIMEOUT\\\"><shadow type=\\\"math_number\\\" id=\\\"Be=/Awuq*Kial{+S~g,b\\\"><field name=\\\"NUM\\\">5</field></shadow></value></block></next></block></statement></block></xml>\",\"code\":\"events.onSwipe('right', function() {\\n  speaker.play('Mind trick');\\n  objects.say(objects.getRandom('random'), objects.quote('Move along.'), 5);\\n\\n});\\n\",\"scene\":\"puzzle020\",\"parts\":[{\"type\":\"speaker\",\"id\":\"speaker\",\"name\":\"Speaker\"}],\"profile\":\"swk\"}",
+
+    "name": "Distract Stormtroopers",
+    "version": "1.0.0",
+    "puzzle": true
+}

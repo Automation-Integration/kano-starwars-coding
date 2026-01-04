@@ -1,0 +1,122 @@
+{
+    "version": "1.0.0",
+    "flyoutMode": true,
+    "id": "lightsaber_3",
+    "name": "Swing a Lightsaber",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"EJpZ~/-Cj9-;_M8J{Kww\\\" x=\\\"300\\\" y=\\\"180\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"every_x_seconds\\\" id=\\\"hYv@(9AJ2T~,/1Zo6-DC\\\"><field name=\\\"UNIT\\\">frames</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"B~hZ^p(x0cY@7-1yHwc(\\\"><field name=\\\"NUM\\\">1</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"objects_drawLightsaber\\\" id=\\\"/u}-U0{M~Cb6eNA]JLZE\\\"><field name=\\\"ID\\\">rey-lightsaber</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"s@dNuZK`/_BB8)BC!fOv\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\";pq$NofuI*W$W/%2+VhY\\\"><field name=\\\"NUM\\\">400</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"8c^HPDDexENt3!3qdt%I\\\"><field name=\\\"NUM\\\">500</field></shadow></value></shadow></value><value name=\\\"SIZE\\\"><shadow type=\\\"math_number\\\" id=\\\"NCj*}z14=fD15N[Yz-AU\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"PERCENT\\\"><shadow type=\\\"math_number\\\" id=\\\"93qAa+1;2-+dVq9]/ABW\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"ANGLE\\\"><shadow type=\\\"angle\\\" id=\\\"ZK^B,/nDjI^(4am}(5aB\\\"><field name=\\\"VALUE\\\">0</field></shadow></value><value name=\\\"COLOR\\\"><shadow type=\\\"colour_picker\\\" id=\\\"0HO*X%1MG{%M7=Oj_d@p\\\"><field name=\\\"COLOUR\\\">#03A9F4</field></shadow></value></block></statement><next><block type=\\\"forceKit_setFeedbackLeds\\\" id=\\\"KTMQ-8!MY!dWAozweN{_\\\"><value name=\\\"COLOR\\\"><shadow type=\\\"colour_picker\\\" id=\\\"to^fb8llZmc6a-*+7Wc[\\\"><field name=\\\"COLOUR\\\">#03A9F4</field></shadow></value><next><block type=\\\"speaker_loop\\\" id=\\\"|Eunp(!o=H?LP4mNz5)F\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"/_E*mbP,Ir8T[$fco6Kv\\\"><field name=\\\"SAMPLE\\\">Lightsaber hum</field></shadow></value></block></next></block></next></block></statement></block></xml>\",\"code\":\"events.onStart(function() {\\n  time.every(1, 'frames', function () {\\n    objects.drawLightsaber('rey-lightsaber', position.create(400, 500), 100, 100, 0, '#03A9F4');\\n  });\\n  forceKit.setFeedbackLeds('#03A9F4');\\n  speaker.loop('Lightsaber hum');\\n\\n});\\n\",\"scene\":\"ahch-to\",\"parts\":[{\"type\":\"speaker\",\"id\":\"speaker\",\"name\":\"Speaker\"}],\"profile\":\"swk\"}",
+    "steps": [
+        {
+        "banner": {
+            "text": "Not as clumsy or random as a blaster, a Lightsaber requires skill and a connection to The Force. Good luck.",
+            "nextButton": true,
+            "disableInput": true
+        },
+        "beacon":  "banner-button:100,50",
+        "type": "banner-step"
+        },
+        {
+            "alias": "start_1",
+            "parent": "block#hYv@(9AJ2T~,/1Zo6-DC>input#DO",
+            "type": "start-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_3",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>Force Kit: pointer x</b> block into the code space.",
+            "connectTo": "block#/u}-U0{M~Cb6eNA]JLZE>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect it to the Lightsaber <b>x position</b>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "Move your hand left and right to move the Lightsaber. Ready to make it tilt as you swing it?"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_lerp",
+            "alias": "block_4",
+            "openFlyoutCopy": "Set the angle of the Lightsaber so it tilts when it's moved. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag the <b>lerp</b> block into the code space.",
+            "connectTo": "block#/u}-U0{M~Cb6eNA]JLZE>input#ANGLE",
+            "connectCopy": "Connect the <b>lerp</b> to the Lightsaber <b>angle</b>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#FROM>shadow>input#NUM",
+            "value": "-20",
+            "bannerCopy": "The <b>lerp</b> block will help make the motion of the Lightsaber smoother. Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>-20</kc-string-preview> so Rey's Lightsaber tilts left when it moves left."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#TO>shadow>input#NUM",
+            "value": "20",
+            "bannerCopy": "Change <kc-string-preview>200</kc-string-preview> to <kc-string-preview>20</kc-string-preview> so it tilts right when it moves right."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_5",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_4>input#PERCENT",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_6",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_5>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#OP",
+            "value": "DIVIDE",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>÷ divide</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#B>shadow>input#NUM",
+            "value": "8",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>8</kc-string-preview>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "Move your hand, see how it feels."
+        },
+        {
+            "banner": {
+                "text": "Watch where you’re swinging that thing.",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "forceKit": [
+            "x"
+        ],
+
+        "math": [
+            "math_arithmetic",
+            "math_lerp"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+
+        ]
+    },
+    "parts": [
+        "speaker"
+    ]
+}

@@ -1,0 +1,322 @@
+{
+    "version": "1.0.0",
+    "id": "pilot_2",
+    "name": "TIE fighter Flyby",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><variables><variable type=\\\"\\\" id=\\\"W7QCp$d4)jvn,MI?U-EQ\\\">direction</variable></variables><block type=\\\"generator_id\\\" id=\\\"DlsS0etOb}g=!NQF2-IE\\\" x=\\\"200\\\" y=\\\"-51\\\"><field name=\\\"ID\\\">pilot_2</field><next><block type=\\\"generator_name\\\" id=\\\"t9T|jzb43Te%oL@D[|)L\\\"><field name=\\\"NAME\\\">TIE fighter Flyby</field><next></next></block></next></block></xml>\",\"code\":\"var direction;\\n\\n\\n// @challenge-id: pilot_2\\n// @challenge-name: TIE fighter Flyby\\n// @challenge-start\\n\\nevents.onSwipe('forward', function() {\\n  for (var i = 0; i < 3; i++) {\\n    objects.add('TIE fighter (top)', 'TIE fighter (top)', position.create(400, 800));\\n  }\\n  speaker.play('TIE fighter flypast');\\n\\n});\\n\\nevents.onStart(function() {\\n  world.setGravity(-5);\\n  time.every(1, 'frames', function () {\\n    direction = math.lerp(-30, 30, forceKit.x / 8);\\n    position.applyForce(objects.get('all'), direction, 2);\\n    position.setAngle(objects.get('all'), direction);\\n    // @end-of-challenge: content\\n  });\\n\\n});\\n\",\"scene\":\"space-deathstar\",\"parts\":[]}",
+    "steps": [
+        {
+            "banner": {
+            "text": "The TIE in TIE fighter stands for Twin Ion Engine. Hopefully that little piece of knowledge will help you fly one.",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#events",
+            "blockType": "events_onSwipe",
+            "alias": "block_1",
+            "openFlyoutCopy": "Get started by adding a gesture block from the ${toolbox#events} tray.",
+            "grabBlockCopy": "Drag the <kc-string-preview> on Force Kit <img src=\"data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuODt9LmNscy0yLC5jbHMtM3tmaWxsOm5vbmU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuMjZweDt9LmNscy0ye3N0cm9rZTojOWZhNGE4O30uY2xzLTN7c3Ryb2tlOnJlZDt9LmNscy00e2ZpbGw6IzAwMDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmdlc3R1cmVzPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE1IiBjeT0iMTUiIHI9IjguMjkiLz48L2c+PC9nPjxnIGlkPSJMYXllcl8yLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMi0yIiBkYXRhLW5hbWU9IkxheWVyIDEtMiIgY2xhc3M9ImNscy0xIj48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOC4xMSwyMi42OWE4LjMyLDguMzIsMCwwLDEtNi4zNCwwIi8+PC9nPjwvZz48cG9seWdvbiBjbGFzcz0iY2xzLTQiIHBvaW50cz0iMTUgMCAxMi40NCA0LjQzIDE3LjU2IDQuNDMgMTUgMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIxNS4xNiAzMCAxNC44NSAzMCAxNC4wOSA0LjQzIDE1LjkxIDQuNDMgMTUuMTYgMzAiLz48L3N2Zz4=\" width=\"15\" align=\"bottom\"></kc-string-preview> block into the code space.",
+            "positionUnder": true,
+            "dropCopy": "Drop the block into your code space."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "repeat_x_times",
+            "alias": "block_2",
+            "openFlyoutCopy": "Create multiple TIE fighters when you push your hand over The Force Coding Kit. Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag the <b>Repeat</b> block into the code space.",
+            "connectTo": "alias#block_1>input#CALLBACK",
+            "connectCopy": "Connect it inside of the gesture block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#N>shadow>input#NUM",
+            "value": "3",
+            "bannerCopy": "Change the number of repeats from <kc-string-preview>10</kc-string-preview> to <kc-string-preview>3</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#objects",
+            "blockType": "objects_add",
+            "alias": "block_3",
+            "openFlyoutCopy": "Create 3 TIE fighters when you push your hand over The Force Coding Kit. Get an <kc-string-preview>Object: create</kc-string-preview> block from the ${toolbox#objects} tray.",
+            "grabBlockCopy": "Drag the <b>Object: create</b> block into the code space.",
+            "connectTo": "alias#block_2>input#DO",
+            "connectCopy": "Connect it inside of the <b>Repeat 3 times</b> block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#ID",
+            "value": "TIE fighter (top)",
+            "bannerCopy": "Change <kc-string-preview>Porg</kc-string-preview> to <kc-string-preview>TIE fighter (top)</kc-string-preview>."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swPushSwipe",
+            "text": "Perform a push movement and watch the TIE fighter app... oh, it's fallen down."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_3>input#POSITION>shadow>input#Y>shadow>input#NUM",
+            "value": "800",
+            "bannerCopy": "Change the <b>y</b> position of the TIE fighters to <kc-string-preview>800</kc-string-preview>. The canvas is 600 pixels tall, so this will create them just below the canvas. "
+        },
+        {
+            "type": "create-part",
+            "alias": "part_0",
+            "part": "speaker",
+            "openPartsCopy": "Play a TIE fighter sound effect when you push your hand over the sensors. Add a ${part.speaker} part using the <b>Add Parts</b> button."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_0>toolbox",
+            "blockType": "speaker_play",
+            "alias": "block_4",
+            "openFlyoutCopy": "Open the ${alias#part_0>toolbox} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_2>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_4>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "tie-fighter-flypast",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>TIE fighter flypast</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#events",
+            "blockType": "events_onStart",
+            "alias": "block_5",
+            "openFlyoutCopy": "Open the ${toolbox#events} tray.",
+            "grabBlockCopy": "Drag the <b>When app starts</b> block into the code space.",
+            "positionUnder": true,
+            "dropCopy": "Drop the block into your code space."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#world",
+            "blockType": "world_setGravity",
+            "alias": "block_6",
+            "openFlyoutCopy": "Now you're going to change the <b>gravity</b>. Open the ${toolbox#world} tray.",
+            "grabBlockCopy": "Drag the <b>gravity</b> block into the code space.",
+            "connectTo": "alias#block_5>input#CALLBACK",
+            "connectCopy": "Connect it inside of the <b>When app starts</b> block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_6>input#GRAVITY>shadow>input#NUM",
+            "value": "0",
+            "bannerCopy": "Set the <b>gravity</b> to <kc-string-preview>0</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "every_x_seconds",
+            "alias": "block_7",
+            "openFlyoutCopy": "Open the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_6>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#UNIT",
+            "value": "frames",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>frames</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_applyForce",
+            "alias": "block_13",
+            "openFlyoutCopy": "Add a force block that will push the TIE fighters forwards. Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag the <b>apply force</b> block into the code space.",
+            "connectTo": "alias#block_7>input#DO",
+            "connectCopy": "Connect it inside of the loop."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_13>input#FORCE>shadow>input#NUM",
+            "value": "20",
+            "bannerCopy": "Change the strength from <kc-string-preview>0</kc-string-preview> to <kc-string-preview>20</kc-string-preview>."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swPushSwipe",
+            "text": "Try a push movement and watch the TIE fighters fly by."
+         },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_set",
+            "alias": "block_8",
+            "openFlyoutCopy": "Now you're going to move the TIE fighters in different directions with your hand. Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_13>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#VAR",
+            "value": "direction",
+            "bannerCopy": "This <b>variable</b> is going to store the direction the TIE fighters are going to fly in. Change the name of the variable from <kc-string-preview>item</kc-string-preview> to <kc-string-preview>direction</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_lerp",
+            "alias": "block_9",
+            "openFlyoutCopy": "Use a <b>lerp</b> to set which direction the TIE fighters should go. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag the <b>lerp</b> block into the code space.",
+            "connectTo": "alias#block_8>input#VALUE",
+            "connectCopy": "Connect it to the <b>direction</b> variable."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#FROM>shadow>input#NUM",
+            "value": "-30",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>-30</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#TO>shadow>input#NUM",
+            "value": "30",
+            "bannerCopy": "Change <kc-string-preview>200</kc-string-preview> to <kc-string-preview>30</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_10",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_9>input#PERCENT",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_11",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>Force Kit: pointer x</b> block into the code space.",
+            "connectTo": "alias#block_10>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_10>input#OP",
+            "value": "DIVIDE",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>÷ divide</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_10>input#B>shadow>input#NUM",
+            "value": "8",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>8</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_14",
+            "openFlyoutCopy": "Open the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_13>input#ANGLE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_14>input#VAR",
+            "value": "direction",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>direction</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_setAngle",
+            "alias": "block_15",
+            "openFlyoutCopy": "Now to set the angle of the TIE fighters so they are going in the direction they're facing. Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag the <b>Object: set angle</b> block into the code space.",
+            "connectTo": "alias#block_8>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#variables",
+            "blockType": "variables_get",
+            "alias": "block_16",
+            "openFlyoutCopy": "Get another <b>variable</b> block from the ${toolbox#variables} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_15>input#ANGLE",
+            "connectCopy": "Connect to the <b>angle</b>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_16>input#VAR",
+            "value": "direction",
+            "bannerCopy": "Change <kc-string-preview>item</kc-string-preview> to <kc-string-preview>direction</kc-string-preview>."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swDirectSwipe",
+            "text": "Now the TIE fighters can be steered in different directions with your hand."
+         },
+        {
+            "banner": {
+                "text": "Okay... so you can fly X-wings and TIE fighters. But can you fly the fastest hunk of junk in the galaxy?",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "objects": [
+            "add"
+        ],
+        "speaker": [
+            "play"
+        ],
+        "control": [
+            "repeat_x_times",
+            "every_x_seconds"
+        ],
+        "events": [
+            "onSwipe",
+            "onStart"
+        ],
+        "forceKit": [
+            "x"
+        ],
+        "variables": [
+            "variables_get",
+            "variables_set"
+        ],
+        "math": [
+            "math_number",
+            "math_arithmetic",
+            "math_lerp"
+        ],
+        "position": [
+            "setAngle",
+            "applyForce"
+        ],
+        "world": [
+            "setGravity"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+            "play"
+        ]
+    },
+    "parts": [
+        "speaker"
+    ]
+}

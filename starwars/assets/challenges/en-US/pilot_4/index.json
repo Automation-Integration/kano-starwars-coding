@@ -1,0 +1,394 @@
+{
+    "version": "1.0.0",
+    "id": "pilot_4",
+    "name": "Luke's Landspeeder",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"{EpK;Nw-lgQ]yuz,|[,{\\\" x=\\\"30\\\" y=\\\"20\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"objects_add\\\" id=\\\"0uCgNt,vTo~ONk5~nroa\\\"><field name=\\\"ID\\\">Luke Skywalker</field><field name=\\\"NAME\\\">Luke Skywalker</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"Y)f;2U~7k{-FMiqrc`^4\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"S6-HEptvY|q~A^*MCTxg\\\"><field name=\\\"NUM\\\">385</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"4CV/M!!JX+N`X)Ynv~X4\\\"><field name=\\\"NUM\\\">455</field></shadow></value></shadow></value><next><block type=\\\"objects_scale\\\" id=\\\"T5Aa/C%GoW(873F4]pPD\\\"><field name=\\\"PROPORTION\\\">set</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"CIZ6c!DP6Wa4_mH]l;u2\\\"><field name=\\\"ID\\\">Luke Skywalker</field></shadow></value><value name=\\\"VALUE\\\"><shadow type=\\\"math_number\\\" id=\\\"4+t{Y+JIMmYDOwHn7[fh\\\"><field name=\\\"NUM\\\">25</field></shadow></value><next><block type=\\\"objects_add\\\" id=\\\"NYQ=^i+~8rot5{eYPKS0\\\"><field name=\\\"ID\\\">X-34 landspeeder</field><field name=\\\"NAME\\\">X-34 landspeeder</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"}jnu,9y0-!8L?6Z]gR/J\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"U/f2P@ptaV)*+jK6_+q$\\\"><field name=\\\"NUM\\\">400</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"qb}Wu}dAnX}G0)|5Ls@S\\\"><field name=\\\"NUM\\\">500</field></shadow></value></shadow></value><next><block type=\\\"objects_stick\\\" id=\\\"*Jit/{EqZq`C3=3IPMeG\\\"><field name=\\\"STATE\\\">freeze</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"[!{gS?VK[4xnrCDeJGFx\\\"><field name=\\\"ID\\\">all</field></shadow></value><next><block type=\\\"speaker_loop\\\" id=\\\"{v%)16x2%x-||2ot_A_X\\\"><value name=\\\"SAMPLE\\\"><shadow type=\\\"speaker_getSample\\\" id=\\\"!97*AR)AL-_go+QaP$fx\\\"><field name=\\\"SAMPLE\\\">X-34 landspeeder</field></shadow></value><next><block type=\\\"every_x_seconds\\\" id=\\\"|MS(^0$xZO|E|//{x7U7\\\"><field name=\\\"UNIT\\\">frames</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"VIF/6{=+vWBN-oVU(5dR\\\"><field name=\\\"NUM\\\">1</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"position_lerpTowards\\\" id=\\\"URy9A69o]d73`MYC?yOO\\\"><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"^I/[dB47=[z;38j%0/O0\\\"><field name=\\\"ID\\\">X-34 landspeeder</field></shadow></value><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"mQ%(MH3s%PBc_x}4`Gj@\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"YHUrDQ,T6;}1GY[7XSac\\\"><field name=\\\"NUM\\\">400</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"1{hF/v43s2%zCcb7,m94\\\"><field name=\\\"NUM\\\">550</field></shadow></value></shadow></value><value name=\\\"ANGLE\\\"><shadow type=\\\"angle\\\" id=\\\"Lz1LZ$v!zO$;vR(@w])}\\\"><field name=\\\"VALUE\\\">0</field></shadow></value><value name=\\\"PERCENTAGE\\\"><shadow type=\\\"math_number\\\" id=\\\"elRah~w)rgQO%G!m~V~;\\\"><field name=\\\"NUM\\\">5</field></shadow></value><next><block type=\\\"position_lerpTowards\\\" id=\\\"0~C_%sqK9)$zC^s%Q/eq\\\"><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"tzTYYU^9plyLxtt82+n4\\\"><field name=\\\"ID\\\">Luke Skywalker</field></shadow></value><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"_*WXC4eLAX%V?+j-(?C9\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"z=udEDEIHs^oxCbrGv5Z\\\"><field name=\\\"NUM\\\">380</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"~hXucOA@ZkvHn?Lr|68z\\\"><field name=\\\"NUM\\\">510</field></shadow></value></shadow></value><value name=\\\"ANGLE\\\"><shadow type=\\\"angle\\\" id=\\\"@srz_RBpnI2BGK!A]aq%\\\"><field name=\\\"VALUE\\\">0</field></shadow></value><value name=\\\"PERCENTAGE\\\"><shadow type=\\\"math_number\\\" id=\\\"$P?`d1~3wEte|0$XvmkX\\\"><field name=\\\"NUM\\\">5</field></shadow></value></block></next></block></statement></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>\",\"code\":\"events.onStart(function() {\\n  objects.add('Luke Skywalker', 'Luke Skywalker', position.create(385, 455));\\n  objects.scale('set', objects.get('Luke Skywalker'), 'by', 25);\\n  objects.add('X-34 landspeeder', 'X-34 landspeeder', position.create(400, 500));\\n  objects.stick('freeze', objects.get('all'));\\n  speaker.loop('X-34 landspeeder');\\n  time.every(1, 'frames', function () {\\n    position.lerpTowards(objects.get('X-34 landspeeder'), position.create(400, 550), 0, 5);\\n    position.lerpTowards(objects.get('Luke Skywalker'), position.create(380, 510), 0, 5);\\n  });\\n\\n});\\n\",\"scene\":\"scrolling-tatooine\",\"parts\":[{\"type\":\"speaker\",\"id\":\"speaker\",\"name\":\"Speaker\"}],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "banner": {
+            "text": "I'd forgotten how much I hate space travel. It's good to be back on solid ground.",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "alias": "start_1",
+            "parent": "block#|MS(^0$xZO|E|//{x7U7>input#DO",
+            "type": "start-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_3",
+            "openFlyoutCopy": "Use the <b>Object: lerp</b> blocks in the code space to move Luke and the landspeeder. Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>Force Kit: pointer x</b> block into the code space.",
+            "connectTo": "block#URy9A69o]d73`MYC?yOO>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_2",
+            "openFlyoutCopy": "Set the Y position of the landspeeder so it moves up and down with your hand. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "block#URy9A69o]d73`MYC?yOO>input#POSITION>shadow>input#Y",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#A>shadow>input#NUM",
+            "value": "600",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>600</kc-string-preview>."
+        },
+
+        {
+            "type": "change-input",
+            "target": "alias#block_2>input#OP",
+            "value": "MINUS",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>-</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_height_get",
+            "alias": "block_50",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <b>Force kit: height</b> block into the code space.",
+            "connectTo": "alias#block_2>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swLeftRightSwipe",
+            "text": "Move your hand left and right to pilot the landspeeder. Uh oh... you've forgotten Luke!"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_5",
+            "openFlyoutCopy": "Set the position of Luke to sit him in the landspeeder. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "block#0~C_%sqK9)$zC^s%Q/eq>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_3",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_5>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#OP",
+            "value": "MINUS",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>- subtract</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#B>shadow>input#NUM",
+            "value": "20",
+            "bannerCopy": "Move Luke back by subtracting <kc-string-preview>20</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_51",
+            "openFlyoutCopy": "Now you're going to set Luke's y position too. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "block#0~C_%sqK9)$zC^s%Q/eq>input#POSITION>shadow>input#Y",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_51>input#A>shadow>input#NUM",
+            "value": "560",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>560</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_51>input#OP",
+            "value": "MINUS",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>- subtract</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_height_get",
+            "alias": "block_53",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_51>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swLeftRightSwipe",
+            "text": "That's better, now Luke and his landspeeder can hurtle across the Tatooine desert together."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_generate",
+            "alias": "block_8",
+            "openFlyoutCopy": "Add a particle effect to make it look like the landspeeder is kicking up sand. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag the <b>Particle: create</b> block into the code space.",
+            "connectTo": "block#0~C_%sqK9)$zC^s%Q/eq>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_9",
+            "openFlyoutCopy": "First you're going to set the x position of the particles so they follow the landspeeder. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to the particle x position."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_get",
+            "alias": "block_10",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag the <b>Object: get position</b> block into the code space.",
+            "connectTo": "alias#block_9>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_10>input#TARGET>shadow>input#ID",
+            "value": "X-34 landspeeder",
+            "bannerCopy": "Change <kc-string-preview>random</kc-string-preview> to <kc-string-preview>X-34 landspeeder</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_9>input#OP",
+            "value": "MINUS",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>- subtract</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_11",
+            "openFlyoutCopy": "Randomize the x position by adding a random number block. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag the <b>random number</b> block into the code space.",
+            "connectTo": "alias#block_9>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_11>input#MAX>shadow>input#NUM",
+            "value": "150",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>150</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_55",
+            "openFlyoutCopy": "Now set the Y position of the particles so they're underneath the landspeeder. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#POSITION>shadow>input#Y",
+            "connectCopy": "Connect to the particle y position."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_get",
+            "alias": "block_56",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray to get another <b>Object: position</b> block.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_55>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_56>input#PROPERTY",
+            "value": "y",
+            "bannerCopy": "Change <kc-string-preview>x position</kc-string-preview> to <kc-string-preview>y position</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_56>input#TARGET>shadow>input#ID",
+            "value": "X-34 landspeeder",
+            "bannerCopy": "Change <kc-string-preview>random</kc-string-preview> to <kc-string-preview>X-34 landspeeder</kc-string-preview>"
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_55>input#B>shadow>input#NUM",
+            "value": "20",
+            "bannerCopy": "Bring the particles further down by adding <kc-string-preview>20</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setForce",
+            "alias": "block_12",
+            "openFlyoutCopy": "Direct the particles so they fly behind the landspeeder. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag the <b>Particle: force direction</b> block into the code space.",
+            "connectTo": "alias#block_8>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_13",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_12>input#ANGLE",
+            "connectCopy": "Connect to the <b>force direction</b>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_13>input#MIN>shadow>input#NUM",
+            "value": "260",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>260</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_13>input#MAX>shadow>input#NUM",
+            "value": "290",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>290</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_12>input#AMOUNT>shadow>input#NUM",
+            "value": "8",
+            "bannerCopy": "Change the strength of the particles from <kc-string-preview>10</kc-string-preview> to <kc-string-preview>8</kc-string-preview> to slow them down."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setColor",
+            "alias": "block_17",
+            "openFlyoutCopy": "Next you'll change the colour of the particles so they look more like dust and sand. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_12>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#START COLOR>shadow>input#COLOUR",
+            "value": "#FFFDE7",
+            "bannerCopy": "Change <kc-color-preview color=\"#000000\"></kc-color-preview> to a sandy color, like <kc-color-preview color=\"#FFFDE7\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_17>input#END COLOR>shadow>input#COLOUR",
+            "value": "#FFF8E1",
+            "bannerCopy": "Change <kc-color-preview color=\"#000000\"></kc-color-preview> to to another sandy color <kc-color-preview color=\"#FFF8E1\"></kc-color-preview>.",
+            "skipCheck": true
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setSize",
+            "alias": "block_14",
+            "openFlyoutCopy": "Now change the size of the particles. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag the <b>Particle: size</b> block into the code space.",
+            "connectTo": "alias#block_17>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_14>input#START SIZE>shadow>input#NUM",
+            "value": "2",
+            "bannerCopy": "Change the start size of the particles to <kc-string-preview>2</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_14>input#END SIZE>shadow>input#NUM",
+            "value": "40",
+            "bannerCopy": "Change the end size of the particles to <kc-string-preview>40</kc-string-preview> so they get bigger over time."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setTransparency",
+            "alias": "block_15",
+            "openFlyoutCopy": "Make the particles more see-through using a transparency block. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag the <b>Particle: transparency</b> block into the code space.",
+            "connectTo": "alias#block_14>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_15>input#END TRANSPARENCY>shadow>input#NUM",
+            "value": "20",
+            "bannerCopy": "Change the end transparency from <kc-string-preview>100</kc-string-preview> to <kc-string-preview>20</kc-string-preview> so they disappear over time."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setLifespan",
+            "alias": "block_16",
+            "openFlyoutCopy": "To finish off you're going to change how long the particles are on the canvas for. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag the <b>Particle: lifespan</b> block into the code space.",
+            "connectTo": "alias#block_15>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_16>input#LIFESPAN>shadow>input#NUM",
+            "value": "300",
+            "bannerCopy": "Change <kc-string-preview>1000</kc-string-preview> to <kc-string-preview>300</kc-string-preview> so each particle only appears for 300 frames."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swLeftRightSwipe",
+            "text": "Move your hand to pilot the X-34. Oh my, this planet is dusty."
+        },
+        {
+            "banner": {
+                "text": "The binary sunset on Tatooine does make my processors tingle. But I can't stand the sand.",
+                "nextChallengeButton": true
+            },
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "forceKit": [
+            "x",
+            "height"
+        ],
+        "position": [
+            "get",
+            "lerpTowards"
+        ],
+        "math": [
+            "math_number",
+            "math_arithmetic",
+            "math_random"
+        ],
+        "particle": [
+            "setColor",
+            "setLifespan",
+            "setTransparency",
+            "setSize",
+            "setForce",
+            "generate"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+            "loop"
+        ]
+    },
+    "parts": [
+        "speaker"
+    ]
+}

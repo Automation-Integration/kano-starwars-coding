@@ -1,0 +1,100 @@
+{
+    "version": "1.0.0",
+    "flyoutMode": true,
+    "id": "lightsaber_2",
+    "name": "Add Lightsaber Sound",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"EJpZ~/-Cj9-;_M8J{Kww\\\" x=\\\"350\\\" y=\\\"200\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"every_x_seconds\\\" id=\\\"hYv@(9AJ2T~,/1Zo6-DC\\\"><field name=\\\"UNIT\\\">frames</field><value name=\\\"INTERVAL\\\"><shadow type=\\\"math_number\\\" id=\\\"B~hZ^p(x0cY@7-1yHwc(\\\"><field name=\\\"NUM\\\">1</field></shadow></value><statement name=\\\"DO\\\"><block type=\\\"objects_drawLightsaber\\\" id=\\\"/u}-U0{M~Cb6eNA]JLZE\\\"><field name=\\\"ID\\\">rey-lightsaber</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"s@dNuZK`/_BB8)BC!fOv\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\";pq$NofuI*W$W/%2+VhY\\\"><field name=\\\"NUM\\\">400</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"8c^HPDDexENt3!3qdt%I\\\"><field name=\\\"NUM\\\">500</field></shadow></value></shadow></value><value name=\\\"SIZE\\\"><shadow type=\\\"math_number\\\" id=\\\"NCj*}z14=fD15N[Yz-AU\\\"><field name=\\\"NUM\\\">100</field></shadow></value><value name=\\\"PERCENT\\\"><shadow type=\\\"math_number\\\" id=\\\"93qAa+1;2-+dVq9]/ABW\\\"><field name=\\\"NUM\\\">100</field></shadow><block type=\\\"forceKit_height_get\\\" id=\\\"$BWIM]u=YS4S06Qc4]-U\\\"></block></value><value name=\\\"ANGLE\\\"><shadow type=\\\"angle\\\" id=\\\"ZK^B,/nDjI^(4am}(5aB\\\"><field name=\\\"VALUE\\\">0</field></shadow></value><value name=\\\"COLOR\\\"><shadow type=\\\"colour_picker\\\" id=\\\"0HO*X%1MG{%M7=Oj_d@p\\\"><field name=\\\"COLOUR\\\">#03A9F4</field></shadow></value><next></next></block></statement><next></next></block></statement></block></xml>\",\"scene\":\"ben-hut\",\"parts\":[{\"type\":\"speaker\", \"id\":\"speaker\"}],\"profile\":\"swk\"}",
+    "steps": [
+
+        {
+            "alias": "start_1",
+            "parent": "block#/u}-U0{M~Cb6eNA]JLZE>next",
+            "type": "start-step"
+        },
+        {
+            "banner": {
+                "text": "A Lightsaber’s blade is powered by a kyber crystal. This Lightsaber once belonged to Luke Skywalker, and then Rey. Time to add its distinctive sound.",
+                "nextButton": true,
+                "disableInput": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_setFeedbackLeds",
+            "alias": "block_4",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Set the lights on your Force Kit to match the Lightsaber. Drag the <b>set feedback LEDs</b> block with your mouse or finger into the code space.",
+            "connectTo": "block#hYv@(9AJ2T~,/1Zo6-DC>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swUpDownSwipe",
+            "text": "Rey's Lightsaber houses a blue kyber crystal. Move your hand to see the blue lights on your kit get brighter."
+        },
+        {
+            "type": "create-block",
+            "category": "part#speaker>toolbox",
+            "blockType": "loop",
+            "alias": "block_5",
+            "openFlyoutCopy": "Open the ${part#speaker>toolbox} tray.",
+            "grabBlockCopy": "Add the Lightsaber's hum using the <b>Speaker: loop</b> block. Drag it into the code space.",
+            "connectTo": "alias#block_4>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "part#speaker>toolbox",
+            "blockType": "volume_set",
+            "alias": "block_2",
+            "openFlyoutCopy": "Open the ${part#speaker>toolbox} tray.",
+            "grabBlockCopy": "Set the volume of the hum so it gets quieter the closer your hand is to the sensors. Drag the <b>Speaker: volume</b> block into the code space.",
+            "connectTo": "alias#start_1>next",
+            "connectCopy": "Connect it inside of the <b>Every 1 frames</b> loop."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_height_get",
+            "alias": "block_3",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Pick up the <b>Force Kit: height</b> block and drag it into the code space.",
+            "connectTo": "alias#block_2>input#VOLUME",
+            "connectCopy": "Connect it to the <b>Speaker: volume</b> block."
+        },
+        {
+            "type": "gesture-video",
+            "gesture": "swUpDownSwipe",
+            "text": "Move your hand up and down to hear the Lightsaber's hum change volume."
+        },
+        {
+            "banner": {
+                "text": "Huh, you did it, well done. But do you have the focus to wield your Lightsaber like a Jedi?",
+                "nextChallengeButton": true
+            },
+            "tooltips": [
+              {
+                  "text": "The <b>Force Kit: height</b> block measures how close your hand is to the sensors.<br/><br/>0 is your hand covering the sensors, and 100 is when it's furthest away.",
+                  "target": "alias#block_3",
+                  "position": "right"
+              }
+           ],
+            "type": "banner-step"
+        }
+    ],
+    "whitelist": {
+        "forceKit": [
+            "height",
+            "setFeedbackLeds"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+            "volume",
+            "loop"
+        ]
+    }
+}

@@ -1,0 +1,341 @@
+{
+    "version": "1.0.0",
+    "id": "pilot_1",
+    "name": "Pilot an X-wing",
+    "defaultApp": "{\"source\":\"<xml xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><block type=\\\"events_onStart\\\" id=\\\"}xD{v|7Z3U!369R8n|pT\\\" x=\\\"20\\\" y=\\\"220\\\"><field name=\\\"FLASH\\\"></field><statement name=\\\"CALLBACK\\\"><block type=\\\"objects_add\\\" id=\\\"=0udBVQr4dG9b!c[uNB2\\\"><field name=\\\"ID\\\">X-wing (behind)</field><field name=\\\"NAME\\\">X-wing (behind)</field><value name=\\\"POSITION\\\"><shadow type=\\\"position_create\\\" id=\\\"q%-SIW2Kqgs_??pom5xi\\\"><value name=\\\"X\\\"><shadow type=\\\"math_number\\\" id=\\\"jevJ*}jg}xT^xcNKqO/U\\\"><field name=\\\"NUM\\\">400</field></shadow></value><value name=\\\"Y\\\"><shadow type=\\\"math_number\\\" id=\\\"Ge(f(i|uijoHO/D?]{@K\\\"><field name=\\\"NUM\\\">300</field></shadow></value></shadow></value><next><block type=\\\"objects_stick\\\" id=\\\"-/qAx$ZhI`NTHa$oN8L7\\\"><field name=\\\"STATE\\\">freeze</field><value name=\\\"TARGET\\\"><shadow type=\\\"objects_get\\\" id=\\\"+LqH9~Fkj+D7j6ZFjToW\\\"><field name=\\\"ID\\\">all</field></shadow></value><next></next></block></next></block></statement></block></xml>\",\"code\":\"// @challenge-id: challenge-id\\n// @challenge-name: Challenge Name\\n\\nevents.onStart(function() {\\n  objects.add('X-wing (behind)', 'X-wing (behind)', position.create(400, 300));\\n  objects.stick('freeze', objects.get('all'));\\n  // @challenge-start\\n  time.every(1, 'frames', function () {\\n  });\\n  // @end-of-challenge: content\\n\\n});\\n\",\"scene\":\"sandbox\",\"parts\":[],\"profile\":\"swk\"}",
+    "steps": [
+        {
+            "banner": {
+            "text": "Oh, hello again. Did you know the X-wing is a nimble and versatile Rebel Alliance starfighter? Do you have the skills to pilot one?",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "alias": "start_0",
+            "parent": "block#-/qAx$ZhI`NTHa$oN8L7>next",
+            "type": "start-step"
+        },
+        {
+            "type": "create-part",
+            "alias": "part_0",
+            "part": "speaker",
+            "openPartsCopy": "Start out by adding sound to the X-wing. Add a ${part.speaker} part using the Add Parts button."
+        },
+        {
+            "type": "create-block",
+            "category": "alias#part_0>toolbox",
+            "blockType": "speaker_loop",
+            "alias": "block_19",
+            "openFlyoutCopy": "Open the ${alias#part_0>toolbox} tray.",
+            "grabBlockCopy": "Drag the <b>Speaker: loop</b> block into the code space.",
+            "connectTo": "alias#start_0>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_19>input#SAMPLE>shadow>input#SAMPLE",
+            "value": "x-wing-interior",
+            "bannerCopy": "Change <kc-string-preview>Lightsaber hum</kc-string-preview> to <kc-string-preview>X-wing interior</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#control",
+            "blockType": "every_x_seconds",
+            "alias": "block_1",
+            "openFlyoutCopy": "Add a <b>loop</b> block from the ${toolbox#control} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_19>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_1>input#UNIT",
+            "value": "frames",
+            "bannerCopy": "Change <kc-string-preview>seconds</kc-string-preview> to <kc-string-preview>frames</kc-string-preview> from the dropdown list to make the loop run faster."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_lerpTowards",
+            "alias": "block_5",
+            "openFlyoutCopy": "You're going to use this loop to move the X-wing every frame. Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag the <b>Object: lerp</b> block into the code space.",
+            "connectTo": "alias#block_1>input#DO",
+            "connectCopy": "Connect it inside of the loop."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#TARGET>shadow>input#ID",
+            "value": "X-wing (behind)",
+            "bannerCopy": "Change <kc-string-preview>all</kc-string-preview> to <kc-string-preview>X-wing (behind)</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_6",
+            "openFlyoutCopy": "Move the X-wing left and right using the <kc-string-preview>Force Kit: pointer x</kc-string-preview> block. Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag the <kc-string-preview>Force Kit: pointer x</kc-string-preview> block into the code space.",
+            "connectTo": "alias#block_5>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_5>input#PERCENTAGE>shadow>input#NUM",
+            "value": "2",
+            "bannerCopy": "Change <kc-string-preview>5%</kc-string-preview> to <kc-string-preview>2%</kc-string-preview> to make the movement of the X-Wing smoother."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swLeftRightSwipe",
+           "text": "Move your hand left and right to pilot the X-wing. I'm afraid R2-D2 can't help you."
+        },
+        {
+            "banner": {
+            "text": "The <b>Object: lerp</b> block moves objects to a set position on the canvas smoothly. Every frame, the X-wing will move 2% closer to the <b>Force Kit: pointer x</b> position.",
+            "nextButton": true,
+            "disableInput": true
+        },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_lerp",
+            "alias": "block_7",
+            "openFlyoutCopy": "Next you'll make the X-wing bank left and right as it flies. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag the <b>lerp</b> block into the code space.",
+            "connectTo": "alias#block_5>input#ANGLE",
+            "connectCopy": "Connect it to the X-wing's <b>angle</b>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#FROM>shadow>input#NUM",
+            "value": "10",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>10</kc-string-preview>. This will make the X-wing bank 10 degrees to the right."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_7>input#TO>shadow>input#NUM",
+            "value": "-10",
+            "bannerCopy": "Change <kc-string-preview>200</kc-string-preview> to <kc-string-preview>-10</kc-string-preview>. This will make it bank 10 degrees to the left."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_8",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_7>input#PERCENT",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_x_get",
+            "alias": "block_9",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_8>input#A",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#OP",
+            "value": "DIVIDE",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>÷ divide</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_8>input#B>shadow>input#NUM",
+            "value": "8",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>8</kc-string-preview>."
+        },
+        {
+           "type": "gesture-video",
+           "gesture": "swPilotSwipe",
+           "text": "See how the X-wing banks left and right as you move your hand."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_generate",
+            "alias": "block_11",
+            "openFlyoutCopy": "Use particles to make it look like you're flying through a starfield. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_5>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setSize",
+            "alias": "block_16",
+            "openFlyoutCopy": "Make the size of the particles a bit smaller so they look like stars. Open the ${toolbox#particle} tray to get a <b>size</b> block.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_11>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_16>input#START SIZE>shadow>input#NUM",
+            "value": "0",
+            "bannerCopy": "Change <kc-string-preview>20</kc-string-preview> to <kc-string-preview>0</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_16>input#END SIZE>shadow>input#NUM",
+            "value": "5",
+            "bannerCopy": "Change <kc-string-preview>20</kc-string-preview> to <kc-string-preview>5</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_arithmetic",
+            "alias": "block_12",
+            "openFlyoutCopy": "Change the position of the particles so that they move in the opposite direction of the X-Wing. Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_11>input#POSITION>shadow>input#X",
+            "connectCopy": "Connect to the particle <b>x</b> position."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_12>input#A>shadow>input#NUM",
+            "value": "800",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>800</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_12>input#OP",
+            "value": "MINUS",
+            "bannerCopy": "Change <kc-string-preview>+</kc-string-preview> to <kc-string-preview>- subtract</kc-string-preview> from the dropdown list."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#position",
+            "blockType": "position_get",
+            "alias": "block_14",
+            "openFlyoutCopy": "Open the ${toolbox#position} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_12>input#B",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_14>input#TARGET>shadow>input#ID",
+            "value": "X-wing (behind)",
+            "bannerCopy": "Change <kc-string-preview>random</kc-string-preview> to <kc-string-preview>X-wing (behind)</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#particle",
+            "blockType": "particle_setForce",
+            "alias": "block_17",
+            "openFlyoutCopy": "Now add a <b>force</b> to the particles to control how fast they are. Open the ${toolbox#particle} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_16>next",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_random",
+            "alias": "block_18",
+            "openFlyoutCopy": "Because the <b>force direction</b> is set to 45, now all of the particles are being pushed to the top right of the canvas. You need to push them in every direction, so open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_17>input#ANGLE",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_18>input#MAX>shadow>input#NUM",
+            "value": "360",
+            "bannerCopy": "Change <kc-string-preview>10</kc-string-preview> to <kc-string-preview>360</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#math",
+            "blockType": "math_lerp",
+            "alias": "block_50",
+            "openFlyoutCopy": "Open the ${toolbox#math} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_17>input#AMOUNT",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_50>input#FROM>shadow>input#NUM",
+            "value": "10",
+            "bannerCopy": "Change <kc-string-preview>0</kc-string-preview> to <kc-string-preview>10</kc-string-preview>."
+        },
+        {
+            "type": "change-input",
+            "target": "alias#block_50>input#TO>shadow>input#NUM",
+            "value": "20",
+            "bannerCopy": "Change <kc-string-preview>200</kc-string-preview> to <kc-string-preview>20</kc-string-preview>."
+        },
+        {
+            "type": "create-block",
+            "category": "toolbox#forceKit",
+            "blockType": "forceKit_proximity",
+            "alias": "block_51",
+            "openFlyoutCopy": "Open the ${toolbox#forceKit} tray.",
+            "grabBlockCopy": "Drag this block into the code space.",
+            "connectTo": "alias#block_50>input#PERCENT",
+            "connectCopy": "Connect to this block."
+        },
+        {
+            "banner": {
+                "text": "Luke Skywalker was one of the best pilots in the fleet. You're... uh, not bad.",
+                "nextChallengeButton": true
+            },
+            "beacon":  "banner-button:100,50",
+            "type": "banner-step"
+        }
+
+    ],
+    "whitelist": {
+        "forceKit": [
+            "x",
+            "proximity"
+        ],
+        "math": [
+            "math_arithmetic",
+            "math_lerp",
+            "math_random",
+            "math_number"
+        ],
+        "position": [
+            "get",
+            "lerpTowards"
+        ],
+        "particle": [
+            "setForce",
+            "setSize",
+            "generate"
+        ],
+        "speaker": [
+            "loop"
+        ],
+        "control": [
+            "every_x_seconds"
+        ],
+        "objects": [
+            "stick",
+            "add"
+        ]
+    },
+    "partsWhitelist": {
+        "speaker": [
+            "loop"
+        ]
+    },
+    "parts": [
+        "speaker"
+    ]
+}
